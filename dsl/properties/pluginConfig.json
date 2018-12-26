@@ -1,0 +1,66 @@
+{
+   "query entries" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/entriesList"
+      },
+      "name" : "QueryEntries",
+      "description" : "Retrieves a list of Remedy entries.",
+      "stepName" : "query entries",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "Name of the form to receive entries for.",
+            "label" : "Form Name",
+            "type" : "entry",
+            "property" : "form"
+         },
+         {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Search qualification. e.g. 'Submitter' = \"Allen\"",
+            "label" : "Query",
+            "type" : "textarea",
+            "property" : "query"
+         },
+         {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
+            "label" : "Fields",
+            "type" : "entry",
+            "property" : "fields"
+         },
+         {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog",
+            "label" : "Expand",
+            "type" : "entry",
+            "property" : "expand"
+         }
+      ],
+      "fields" : [
+         "form",
+         "query",
+         "fields",
+         "expand"
+      ],
+      "basicAuth" : "true",
+      "hasConfig" : "true",
+      "method" : "GET",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{formName}?fields=values(#{fields})&assoc=(#{expand})",
+      "attachCredentials" : "true"
+   },
+   "options" : {
+      "noEmptyString" : "true"
+   }
+}

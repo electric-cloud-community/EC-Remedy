@@ -1,0 +1,66 @@
+options:
+  noEmptyString: true
+common:
+  formXmlCompliant: true
+help:
+  title: Electric Flow integration for the BMC Remedy System
+  description: |
+    This plugin allows to work with REST API of BMC Remedy System.
+  links:
+    - https://docs.bmc.com/docs/smartit13/home-595590202.html
+    - https://docs.bmc.com/docs/ars1808/bmc-remedy-ar-system-rest-api-overview-820499795.html
+  hasConfig: true
+name:
+main:
+version:
+procedures:
+  - name: QueryEntries
+    stepName: query entries
+    description: Retrieves a list of Remedy entries.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{formName}?fields=values(#{fields})&assoc=(#{expand})'
+    method: GET
+    # HTTP method
+    hasConfig: true
+    # a field for configuration name will be added to the form
+    attachCredentials: true
+    # credentials will be attached to the procedure
+#    basicAuth: true
+    # credentials will be turned into basic auth header
+    # if no credentials found, the procedure won't fail, the request will be made without credentials
+
+    # The result will be saved in this property
+    resultProperty:
+      show: true
+      # Selectbox with formats will appear
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: form
+        type: entry
+        label: Form Name
+        documentation: Name of the form to receive entries for.
+        required: 1
+        in: query
+      - property: query
+        type: textarea
+        label: Query
+        documentation: Search qualification. e.g. 'Submitter' = "Allen"
+        required: 0
+        in: query
+      - property: fields
+        type: entry
+        label: Fields
+        required: 0
+        in: query
+        documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
+      - property: expand
+        type: entry
+        label: Expand
+        required: 0
+        in: query
+        documentation: Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog

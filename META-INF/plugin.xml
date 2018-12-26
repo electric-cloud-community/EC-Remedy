@@ -1,0 +1,14 @@
+<plugin>
+  <key>EC-Remedy</key>
+  <label>EC-Remedy</label>
+  <version>1.0.0</version>
+  <author>Electric Cloud</author>
+  <authorUrl>http://www.electric-cloud.com/support</authorUrl>
+  <category>Defect Tracking</category>
+  <commander-version min="8.3" />
+  <description>This plugin allows to work with REST API of BMC Remedy System.</description>
+  <configure>ec_config</configure>
+  <pluginWizardBased>false</pluginWizardBased>
+  <depends min="1.4.1">EC-PluginManager</depends>
+  <help>help.xml</help>
+</plugin>
