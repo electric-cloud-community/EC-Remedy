@@ -180,7 +180,7 @@
                     <td>Selects what parts of the JSON document to return e.g. fieldName1, fieldName2</td>
                 </tr>
                 <tr>
-                    <td>Fields</td>
+                    <td>Expand</td>
                     <td>Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog</td>
                 </tr>
                 <tr>

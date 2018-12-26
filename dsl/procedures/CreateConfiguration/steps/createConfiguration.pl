@@ -29,7 +29,7 @@ use constant {
 my $opts;
 
 ## get an EC object
-my $ec = new ElectricCommander();
+my $ec = ElectricCommander->new();
 $ec->abortOnError(0);
 
 ## load option list from procedure parameters
@@ -47,20 +47,19 @@ if (!defined $opts->{config} || "$opts->{config}" eq "") {
 }
 
 # check to see if a config with this name already exists before we do anything else
-my $xpath    = $ec->getProperty('/plugins/@PLUGIN_KEY@/project/ec_plugin_cfgs/' . $opts->{config});
-my $property = $xpath->findvalue("//response/property/propertyName");
+eval {
+    my $xpath = $ec->getProperty('/plugins/@PLUGIN_KEY@/project/ec_plugin_cfgs/' . $opts->{config});
+    my $property = $xpath->findvalue("//response/property/propertyName");
 
-if (defined $property && "$property" ne "") {
-    my $errMsg = "A configuration named '$opts->{config}' already exists.";
-    $ec->setProperty("/myJob/configError", $errMsg);
-    print $errMsg;
-    exit ERROR;
-}
+    if (defined $property && "$property" ne "") {
+        my $errMsg = "A configuration named '$opts->{config}' already exists.";
+        $ec->setProperty("/myJob/configError", $errMsg);
+        print $errMsg;
+        exit ERROR;
+    }
+};
 
 my $cfg = new ElectricCommander::PropDB($ec, '/plugins/@PLUGIN_KEY@/project/ec_plugin_cfgs');
-my $errors = $ec->checkAllErrors($xpath);
-
-die $errors unless !$errors;
 
 # add all the options as properties
 foreach my $key (keys %{$opts}) {

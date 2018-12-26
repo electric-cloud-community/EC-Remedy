@@ -51,7 +51,6 @@
          "fields",
          "expand"
       ],
-      "basicAuth" : "true",
       "hasConfig" : "true",
       "method" : "GET",
       "documentationLinks" : [
