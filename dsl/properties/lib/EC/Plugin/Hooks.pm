@@ -82,23 +82,28 @@ Available hooks types:
 sub define_hooks {
     my ($self) = @_;
 
-    # Get token and apply authorization header
-    $self->define_hook('*', 'request', \&apply_token);
+    $self->define_hook('*', 'response', \&parse_json_error);
 }
 
-sub apply_token {
-    my ($self, $request) = @_;
 
-    # Perform authentication
-    my $token = $self->plugin->get_token();
+sub parse_json_error {
+    my ($self, $response) = @_;
 
-    if (!$token){
-        $self->plugin->bail_out("Failed to get token. Please check credentials.");
+    return if $response->is_success;
+
+    my $json;
+    eval {
+        $json = decode_json($response->content);
+        1;
+    } or do {
+        return;
+    };
+
+    my $formatted_response = JSON->new->utf8->pretty->encode($json);
+    $self->plugin->logger->info('Got error', $formatted_response);
+    my $message = $json->{message};
+    if ($message) {
+        $self->plugin->bail_out($message);
     }
-
-    $request->headers->header('Authorization', 'AR-JWT ' . $token);
-
-    return $request;
 }
-
 1;

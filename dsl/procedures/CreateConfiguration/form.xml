@@ -42,7 +42,7 @@
         <label>Credential:</label>
         <property>credential</property>
         <required>1</required>
-        <documentation>Username and password to connect to BMC Remedy</documentation>
+        <documentation>Username and password to connect to BMC Remedy.</documentation>
         <attachedAsParameterToStep>createAndAttachCredential</attachedAsParameterToStep>
     </formElement>
 </editor>

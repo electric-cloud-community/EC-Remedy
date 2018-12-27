@@ -20,7 +20,7 @@ procedures:
     # http://localhost:8008/api/arsys/v1/entry/SimpleForm
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{formName}?fields=values(#{fields})&assoc=(#{expand})'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form}?fields=values(#{fields})&assoc=(#{expand})'
     method: GET
     # HTTP method
     hasConfig: true
@@ -45,7 +45,6 @@ procedures:
         label: Form Name
         documentation: Name of the form to receive entries for.
         required: 1
-        in: query
       - property: query
         type: textarea
         label: Query

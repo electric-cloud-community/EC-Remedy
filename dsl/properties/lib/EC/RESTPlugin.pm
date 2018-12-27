@@ -197,8 +197,9 @@ sub generate_step_request {
 
     $self->logger->debug("Endpoint: $uri");
 
-    my $request = HTTP::Request->new($method, $uri);
+    my $request = $self->get_new_http_request($method, $uri);
 
+    $config->{auth} ||= '';
     if ($config->{auth} eq 'basic'
         && $self->config->{$step_name}->{basicAuth}
         && $self->config->{$step_name}->{basicAuth} eq 'true'
@@ -718,7 +719,7 @@ sub new_lwp {
     my $config_name = $self->get_param('config');
     my $config = $self->get_config_values($config_name);
 
-    my $auth_type = $config->{auth};
+    my $auth_type = $config->{auth} || '';
 
     if ($auth_type eq 'basic'){
         $self->logger->debug("Request should be authorized. Nothing to do with the \$ua");
@@ -767,13 +768,13 @@ sub new_lwp {
 
             # Apply the changed headers
             $response->headers($headers);
-
-            print Dumper $response->{_headers};
         });
-
+    }
+    elsif ($self->{auth_type} && ref $self->{auth_type}){
+       $self->{auth_type}{ua}->($ua) if ($self->{auth_type}{ua});
     }
     else {
-        $self->bail_out("Unknown auth type : '$auth_type'")
+        $self->bail_out("Unknown auth type in UA : '$auth_type'")
     }
 
     return $ua;
@@ -789,7 +790,7 @@ sub get_new_http_request {
     my $config_name = $self->get_param('config');
     my $config = $self->get_config_values($config_name);
 
-    my $auth_type = $config->{auth};
+    my $auth_type = $config->{auth} || '';
 
     # Get credential
     my $username = $config->{userName};
@@ -797,7 +798,10 @@ sub get_new_http_request {
 
     $self->logger->debug("Password is empty") unless $password;
 
-    if ($auth_type eq 'basic'){
+    if ($self->{auth_type} && ref $self->{auth_type}) {
+        $self->{auth_type}->{request}->($request) if ($self->{auth_type}->{request});
+    }
+    elsif ($auth_type eq 'basic'){
         $self->logger->debug("Applying HTTP Basic header to the request.");
         $request->authorization_basic($username, $password);
     }
@@ -805,7 +809,7 @@ sub get_new_http_request {
         $self->logger->debug("Auth should be applied to LWP::UserAgent instance");
     }
     else {
-        $self->bail_out("Unknown auth type : '$auth_type'")
+        $self->bail_out("Unknown auth type in request : '$auth_type'")
     }
 
     return $request;

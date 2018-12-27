@@ -14,7 +14,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "in" : "query",
             "documentation" : "Name of the form to receive entries for.",
             "label" : "Form Name",
             "type" : "entry",
@@ -56,7 +55,7 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{formName}?fields=values(#{fields})&assoc=(#{expand})",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}?fields=values(#{fields})&assoc=(#{expand})",
       "attachCredentials" : "true"
    },
    "options" : {
