@@ -721,7 +721,10 @@ sub new_lwp {
 
     my $auth_type = $config->{auth} || '';
 
-    if ($auth_type eq 'basic'){
+    if ($self->{auth_type} && ref $self->{auth_type}){
+        $self->{auth_type}{ua}->($ua) if ($self->{auth_type}{ua});
+    }
+    elsif ($auth_type eq 'basic'){
         $self->logger->debug("Request should be authorized. Nothing to do with the \$ua");
     }
     elsif ($auth_type eq 'ntlm'){
@@ -758,8 +761,6 @@ sub new_lwp {
             my HTTP::Response $response = shift;
             my HTTP::Headers $headers = $response->headers;
 
-            print "RESPONSE DONE: " . Dumper $response;
-
             # Get all the headers
             my @auth_headers = $headers->header('WWW-Authenticate');
 
@@ -770,9 +771,6 @@ sub new_lwp {
             $response->headers($headers);
         });
     }
-    elsif ($self->{auth_type} && ref $self->{auth_type}){
-       $self->{auth_type}{ua}->($ua) if ($self->{auth_type}{ua});
-    }
     else {
         $self->bail_out("Unknown auth type in UA : '$auth_type'")
     }
@@ -782,8 +780,6 @@ sub new_lwp {
 
 sub get_new_http_request {
     my ( $self, $method, $url ) = @_;
-
-    print "[DEBUG] HTTP::Request instantiated for " . join(', ', caller) . "\n";
 
     my $request = HTTP::Request->new($method, $url);
 
