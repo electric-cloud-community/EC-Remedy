@@ -60,5 +60,39 @@
    },
    "options" : {
       "noEmptyString" : "true"
+   },
+   "create incident" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/entriesList"
+      },
+      "name" : "CreateIncident",
+      "description" : "Creates Remedy incident.",
+      "stepName" : "create incident",
+      "parameters" : [
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Fields for incident (param1=value1)",
+            "label" : "Fields",
+            "type" : "textarea",
+            "property" : "values"
+         }
+      ],
+      "fields" : [
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "POST",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "contentType" : "application/json",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create",
+      "attachCredentials" : "true"
    }
 }

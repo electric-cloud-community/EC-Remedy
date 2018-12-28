@@ -9,6 +9,10 @@ This plugin allows to work with REST API of BMC Remedy System.
 
 Retrieves a list of Remedy entries.
 
+## CreateIncident
+
+Creates Remedy incident.
+
 
 
 # Building the plugin

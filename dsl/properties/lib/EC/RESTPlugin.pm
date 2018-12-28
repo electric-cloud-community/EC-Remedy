@@ -781,6 +781,8 @@ sub new_lwp {
 sub get_new_http_request {
     my ( $self, $method, $url ) = @_;
 
+    print "[DEBUG] HTTP::Request instantiated for " . join(', ', caller) . "\n";
+
     my $request = HTTP::Request->new($method, $url);
 
     my $config_name = $self->get_param('config');

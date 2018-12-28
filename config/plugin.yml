@@ -63,3 +63,27 @@ procedures:
         required: 0
         in: query
         documentation: Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog
+  - name: CreateIncident
+    stepName: create incident
+    description: Creates Remedy incident.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: values
+        type: textarea
+        label: Fields
+        required: 0
+        in: body
+        documentation: Fields for incident (JSON object)

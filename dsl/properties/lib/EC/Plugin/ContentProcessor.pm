@@ -84,8 +84,18 @@ Code may look like the following:
 
 # autogen code ends here
 
-sub define_processors {
+use Data::Dumper;
 
+sub define_processors {
+    my ($self) = @_;
+    $self->define_processor('create incident', 'serialize_body', \&raw_body);
+}
+
+sub raw_body {
+    my ($self, $body) = @_;
+    my $data = $body->{values};
+    print "BODY\n" + $data + "END BODY\n";
+    return $data;
 }
 
 1;
