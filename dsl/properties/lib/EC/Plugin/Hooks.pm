@@ -82,7 +82,30 @@ Available hooks types:
 sub define_hooks {
     my ($self) = @_;
 
+
+    # Inserting necessary parameters
+    $self->define_hook('*', 'request', \&expand_generic_parameters);
+
     $self->define_hook('*', 'response', \&parse_json_error);
+}
+
+sub expand_generic_parameters {
+    my ($self, $request) = @_;
+
+    my $parameters = $self->plugin->parameters();
+
+    my %req_params = $request->uri->query_form();
+
+    if ($parameters->{fields}){
+        $req_params{fields} = "values($parameters->{fields})";
+    }
+    if ($parameters->{expand}){
+        # $req_params{}
+    }
+
+    $request->uri->query_form(%req_params);
+
+    return $request;
 }
 
 
