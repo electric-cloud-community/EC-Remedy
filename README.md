@@ -5,9 +5,17 @@ This plugin allows to work with REST API of BMC Remedy System.
 
 # Procedures
 
+## CreateEntry
+
+Creates Remedy entry.
+
 ## QueryEntries
 
 Retrieves a list of Remedy entries.
+
+## UpdateEntry
+
+Updates Remedy entry.
 
 ## GetIncidentStatus
 
@@ -20,6 +28,10 @@ Creates Remedy incident.
 ## UpdateIncident
 
 Updates Remedy incident.
+
+## Create Change Request
+
+Creates Remedy Change Request.
 
 
 

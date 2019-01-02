@@ -14,7 +14,7 @@
   <documentation>Fields for incident (JSON object).</documentation>
   <label>Fields:</label>
   <property>values</property>
-  <required>0</required>
+  <required>1</required>
   <type>textarea</type>
   <value></value>
 </formElement>

@@ -88,8 +88,11 @@ use Data::Dumper;
 
 sub define_processors {
     my ($self) = @_;
-    $self->define_processor('create incident', 'serialize_body', \&raw_body);
-    $self->define_processor('update incident', 'serialize_body', \&raw_body);
+    $self->define_processor('create entry',          'serialize_body', \&raw_body);
+    $self->define_processor('update entry',          'serialize_body', \&raw_body);
+    $self->define_processor('create incident',       'serialize_body', \&raw_body);
+    $self->define_processor('update incident',       'serialize_body', \&raw_body);
+    $self->define_processor('create change request', 'serialize_body', \&raw_body);
 }
 
 sub raw_body {

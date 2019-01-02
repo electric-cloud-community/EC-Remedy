@@ -15,11 +15,18 @@ echo $token
 
 
 # PUT
-curl -H "Authorization: AR-JWT $token" -H "Content-Type: application/json" -X PUT "$endpoint/api/arsys/v1/entry/HPD:IncidentInterface/INC000000000108|INC000000000108" \
-	-d '{"values" : {   "Description":"testing 123" } }' $@
+#curl -H "Authorization: AR-JWT $token" -H "Content-Type: application/json" -X PUT "$endpoint/api/arsys/v1/entry/HPD:IncidentInterface/INC000000000110|INC000000000110" \
+#	-d '{"values" : {   "Description":"EF Test 1" } }' $@
 
 
-#curl  -H "Authorization: AR-JWT $token"  http://ec2-18-234-207-236.compute-1.amazonaws.com:8008/api/arsys/v1/entry/HPD:IncidentInterface_Create/000000000000004 $@
+# PUT
+curl -H "Authorization: AR-JWT $token" -H "Content-Type: application/json" -X PUT "$endpoint/api/arsys/v1/entry/HPD:IncidentInterface_Create/000000000000004" \
+       -d '{"values" : {   "Description":"EF Test 1", "Urgency" : "4-Low" } }' $@
+
+
+
+#curl  -H "Authorization: AR-JWT $token"  'http://ec2-18-234-207-236.compute-1.amazonaws.com:8008/api/arsys/v1/entry/HPD:IncidentInterface_Create?fields=values(Incident%20Number)' $@
+#curl -H "Authorization: AR-JWT $token" "$endpoint/api/arsys/v1/entry/HPD:IncidentInterface_Create"
 
 
 echo
