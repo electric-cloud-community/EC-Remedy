@@ -89,12 +89,12 @@ use Data::Dumper;
 sub define_processors {
     my ($self) = @_;
     $self->define_processor('create incident', 'serialize_body', \&raw_body);
+    $self->define_processor('update incident', 'serialize_body', \&raw_body);
 }
 
 sub raw_body {
     my ($self, $body) = @_;
-    my $data = $body->{values};
-    print "BODY\n" + $data + "END BODY\n";
+    my $data = $body->{values}; 
     return $data;
 }
 

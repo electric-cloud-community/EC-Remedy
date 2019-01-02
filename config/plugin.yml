@@ -69,7 +69,7 @@ procedures:
     description: Retrieves a list of Remedy entries.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface?fields=values(#{fields})&assoc=(#{expand})'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{incident_id}'
     method: GET
     hasConfig: true
     attachCredentials: true
@@ -80,12 +80,11 @@ procedures:
         - propertySheet
       default: /myJob/entriesList
     parameters:
-      - property: query
-        type: textarea
-        label: Query
+      - property: incident_id
+        type: entry
+        label: Incident ID
         documentation: Search qualification. e.g. 'Submitter' = "Allen"
-        required: 0
-        in: query
+        required: 1
       - property: fields
         type: entry
         label: Fields
@@ -117,6 +116,35 @@ procedures:
         - propertySheet
       default: /myJob/entriesList
     parameters:
+      - property: values
+        type: textarea
+        label: Fields
+        required: 0
+        in: body
+        documentation: Fields for incident (JSON object)
+
+  - name: UpdateIncident
+    stepName: update incident
+    description: Updates Remedy incident.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{entry_id}'
+    method: PUT
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        required: 1
+        documentation: ID of the incident entry
       - property: values
         type: textarea
         label: Fields

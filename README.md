@@ -17,6 +17,10 @@ Retrieves a list of Remedy entries.
 
 Creates Remedy incident.
 
+## UpdateIncident
+
+Updates Remedy incident.
+
 
 
 # Building the plugin
