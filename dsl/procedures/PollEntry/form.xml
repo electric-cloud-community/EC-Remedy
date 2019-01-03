@@ -27,13 +27,12 @@
   <value></value>
 </formElement>
 <formElement>
-  <default>Status</default>
   <documentation>Field that contains the entry status.</documentation>
   <label>Status Field:</label>
   <property>status_field</property>
   <required>1</required>
   <type>entry</type>
-  <value></value>
+  <value>Status</value>
 </formElement>
 <formElement>
   <documentation></documentation>
@@ -44,13 +43,12 @@
   <value></value>
 </formElement>
 <formElement>
-  <default>300</default>
   <documentation>Polling interval in seconds.</documentation>
   <label>Polling Interval:</label>
   <property>poll_interval</property>
   <required>1</required>
   <type>entry</type>
-  <value></value>
+  <value>300</value>
 </formElement>
 <formElement>
   <documentation>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</documentation>

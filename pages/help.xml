@@ -489,8 +489,7 @@
                 <!-- CreateEntry METADATA BEGIN -->
             <h3>CreateEntry</h3>
             <p>Creates Remedy entry.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateEntry</a> for reference.</p>
-                <!-- CreateEntry METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateEntry</a> for reference.</p><!-- CreateEntry METADATA END -->
                 <!-- CreateEntry BEGIN -->
             <table class="grid">
                 <thead>
@@ -522,15 +521,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- CreateEntry END -->
+        <!-- CreateEntry END -->
             </div>
             <div id="QueryEntries">
                 <a name="QueryEntries" id="QueryEntries" />
                 <!-- QueryEntries METADATA BEGIN -->
             <h3>QueryEntries</h3>
             <p>Retrieves a list of Remedy entries.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">QueryEntries</a> for reference.</p>
-                <!-- QueryEntries METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">QueryEntries</a> for reference.</p><!-- QueryEntries METADATA END -->
                 <!-- QueryEntries BEGIN -->
             <table class="grid">
                 <thead>
@@ -570,15 +568,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- QueryEntries END -->
+        <!-- QueryEntries END -->
             </div>
             <div id="UpdateEntry">
                 <a name="UpdateEntry" id="UpdateEntry" />
                 <!-- UpdateEntry METADATA BEGIN -->
             <h3>UpdateEntry</h3>
             <p>Updates Remedy entry.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p>
-                <!-- UpdateEntry METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p><!-- UpdateEntry METADATA END -->
                 <!-- UpdateEntry BEGIN -->
             <table class="grid">
                 <thead>
@@ -614,15 +611,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- UpdateEntry END -->
+        <!-- UpdateEntry END -->
             </div>
             <div id="GetIncident">
                 <a name="GetIncident" id="GetIncident" />
                 <!-- GetIncident METADATA BEGIN -->
             <h3>GetIncident</h3>
             <p>Get Remedy incident details.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">GetIncident</a> for reference.</p>
-                <!-- GetIncident METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">GetIncident</a> for reference.</p><!-- GetIncident METADATA END -->
                 <!-- GetIncident BEGIN -->
             <table class="grid">
                 <thead>
@@ -654,15 +650,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- GetIncident END -->
+        <!-- GetIncident END -->
             </div>
             <div id="CreateIncident">
                 <a name="CreateIncident" id="CreateIncident" />
                 <!-- CreateIncident METADATA BEGIN -->
             <h3>CreateIncident</h3>
             <p>Creates Remedy incident.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateIncident</a> for reference.</p>
-                <!-- CreateIncident METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateIncident</a> for reference.</p><!-- CreateIncident METADATA END -->
                 <!-- CreateIncident BEGIN -->
             <table class="grid">
                 <thead>
@@ -722,15 +717,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- CreateIncident END -->
+        <!-- CreateIncident END -->
             </div>
             <div id="UpdateIncident">
                 <a name="UpdateIncident" id="UpdateIncident" />
                 <!-- UpdateIncident METADATA BEGIN -->
             <h3>UpdateIncident</h3>
             <p>Updates Remedy incident.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateIncident</a> for reference.</p>
-                <!-- UpdateIncident METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateIncident</a> for reference.</p><!-- UpdateIncident METADATA END -->
                 <!-- UpdateIncident BEGIN -->
             <table class="grid">
                 <thead>
@@ -786,14 +780,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- UpdateIncident END -->
+        <!-- UpdateIncident END -->
             </div>
             <div id="PollEntry">
                 <a name="PollEntry" id="PollEntry" />
                 <!-- PollEntry METADATA BEGIN -->
             <h3>PollEntry</h3>
             <p>Polls Remedy entry until it gets to the desired status</p>
-                <!-- PollEntry METADATA END -->
+        <!-- PollEntry METADATA END -->
                 <!-- PollEntry BEGIN -->
             <table class="grid">
                 <thead>
@@ -833,7 +827,7 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- PollEntry END -->
+        <!-- PollEntry END -->
             </div>
 <!-- PROCEDURES END -->
     </div>
