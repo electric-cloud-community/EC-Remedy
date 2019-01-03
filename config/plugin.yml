@@ -340,6 +340,34 @@ procedures:
         required: 0
         type: entry
 
+  - name: GetChangeRequest
+    stepName: get change request
+    description: Get Remedy change request details.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: cr_id
+        type: entry
+        label: Change Request ID
+        documentation: Entry ID of an incident.
+        required: 1
+      - property: fields
+        type: entry
+        label: Fields
+        required: 0
+        in: query
+        documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
+
   - name: Create Change Request
     stepName: create change request
     description: Creates Remedy Change Request.

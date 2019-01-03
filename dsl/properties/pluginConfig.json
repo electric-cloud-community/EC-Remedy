@@ -313,6 +313,47 @@
       },
       "stepName" : "create incident"
    },
+   "get change request" : {
+      "attachCredentials" : "true",
+      "description" : "Get Remedy change request details.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}",
+      "fields" : [
+         "cr_id",
+         "fields"
+      ],
+      "hasConfig" : "true",
+      "method" : "GET",
+      "name" : "GetChangeRequest",
+      "parameters" : [
+         {
+            "documentation" : "Entry ID of an incident.",
+            "label" : "Change Request ID",
+            "property" : "cr_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
+            "in" : "query",
+            "label" : "Fields",
+            "property" : "fields",
+            "required" : "0",
+            "type" : "entry"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "get change request"
+   },
    "get incident status" : {
       "attachCredentials" : "true",
       "description" : "Get Remedy incident details.",

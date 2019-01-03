@@ -295,6 +295,7 @@
 <li><a href="#CreateIncident">CreateIncident</a></li>
 <li><a href="#UpdateIncident">UpdateIncident</a></li>
 <li><a href="#PollEntry">PollEntry</a></li>
+<li><a href="#GetChangeRequest">GetChangeRequest</a></li>
 <li><a href="#CreateChangeRequest">Create Change Request</a></li>
 <li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li><!-- TOC END -->
         </ul>
@@ -802,28 +803,20 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Entry ID</td>
-                    <td>Entry ID of the entry to be updated</td>
+                    <td class="required">Change Request ID</td>
+                    <td>Entry ID of an incident.</td>
                 </tr>
                 <tr>
-                    <td class="required">Form Name</td>
-                    <td>Form name, e.g. HPD:IncidentInterface_Create</td>
+                    <td>Fields</td>
+                    <td>Selects what parts of the JSON document to return e.g. fieldName1, fieldName2</td>
                 </tr>
                 <tr>
-                    <td class="required">Status Field</td>
-                    <td>Field that contains the entry status</td>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
                 </tr>
                 <tr>
-                    <td class="required">Desired Status</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="required">Polling Interval</td>
-                    <td>Polling interval in seconds</td>
-                </tr>
-                <tr>
-                    <td>Polling Timeout</td>
-                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
                 </tr>
                  </tbody>
             </table>
