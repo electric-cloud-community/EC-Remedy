@@ -125,7 +125,9 @@ sub poll_entry {
     else {
         $self->plugin->set_summary("Status is $status");
     }
+
 }
+
 
 sub expand_generic_parameters {
     my ($self, $request) = @_;

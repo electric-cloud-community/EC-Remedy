@@ -260,7 +260,7 @@ procedures:
         documentation: Fields for incident (JSON object)
 
   - name: PollEntry
-    stepName: PollEntry
+    stepName: poll entry
     description: Polls Remedy entry until it gets to the desired status
     endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
     method: GET
