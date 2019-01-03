@@ -33,6 +33,10 @@ Updates Remedy incident.
 
 Polls Remedy entry until it gets to the desired status
 
+## PollIncident
+
+Polls Remedy Incident until it gets to the desired status
+
 ## Create Change Request
 
 Creates Remedy Change Request.

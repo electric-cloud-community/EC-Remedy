@@ -357,6 +357,57 @@
       ],
       "stepName" : "poll entry"
    },
+   "poll incident" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Polls Remedy Incident until it gets to the desired status",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{entry_id}",
+      "fields" : [
+         "entry_id",
+         "expected_status",
+         "poll_interval",
+         "polling_timeout"
+      ],
+      "hasConfig" : "true",
+      "method" : "GET",
+      "name" : "PollIncident",
+      "outputParameters" : {
+         "entryId" : "Entry ID",
+         "incident" : "JSON representation of the incident",
+         "status" : "Entry status"
+      },
+      "parameters" : [
+         {
+            "documentation" : "Entry ID of the entry to be updated",
+            "label" : "Entry ID",
+            "property" : "entry_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "label" : "Desired Status",
+            "property" : "expected_status",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "default" : "300",
+            "documentation" : "Polling interval in seconds",
+            "label" : "Polling Interval",
+            "property" : "poll_interval",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.",
+            "label" : "Polling Timeout",
+            "property" : "polling_timeout",
+            "required" : "0",
+            "type" : "entry"
+         }
+      ],
+      "stepName" : "poll incident"
+   },
    "query entries" : {
       "attachCredentials" : "true",
       "description" : "Retrieves a list of Remedy entries.",
