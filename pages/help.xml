@@ -1,4 +1,4 @@
-<!-- HELP GEN VERSION 
+<!-- HELP GEN VERSION
             <table class="grid">
                 <thead>
                     <tr>
@@ -30,7 +30,7 @@
                  </tbody>
             </table>
          -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML
             <table class="grid">
                 <thead>
                     <tr>
@@ -288,9 +288,6 @@
 <!-- LINKS END -->
         <h1>Contents</h1>
         <ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         <!-- TOC BEGIN --><li><a href="#CreateEntry">CreateEntry</a></li>
 <li><a href="#QueryEntries">QueryEntries</a></li>
 <li><a href="#UpdateEntry">UpdateEntry</a></li>
@@ -304,7 +301,6 @@
 <li><a href="#CreateChangeRequest">Create Change Request</a></li>
 <li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li>
 <li><a href="#GetEntry">GetEntry</a></li><!-- TOC END -->
->>>>>>> b291d85d371410ed0723131c07c0fc438340f60e
         </ul>
         <h2>Configuration</h2>
         <div id="CreateConfiguration">
@@ -671,9 +667,7 @@
                  </tbody>
             </table>
         <!-- GetEntry END -->
-=======
         <!-- PollEntry END -->
->>>>>>> b291d85d371410ed0723131c07c0fc438340f60e
             </div>
             <div id="QueryEntries">
                 <a name="QueryEntries" id="QueryEntries" />

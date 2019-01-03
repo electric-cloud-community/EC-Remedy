@@ -161,6 +161,10 @@
       "hasConfig" : "true",
       "method" : "POST",
       "name" : "CreateIncident",
+      "outputParameters" : {
+         "entryId" : "Entry ID of the incident",
+         "incident" : "JSON representation of the incident"
+      },
       "parameters" : [
          {
             "documentation" : "An incident description.",

@@ -266,9 +266,24 @@ sub create_incident_response {
     return if $response->is_error;
     my $url = $response->header('Location');
 
-
     if ($url) {
         $self->plugin->ec()->setProperty('/myJobStep/URL', $url);
+
+        my $uri = URI->new($url);
+        my @segments = reverse $uri->path_segments;
+        my $entry_id = $segments[0];
+
+        my $request = $self->plugin->get_new_http_request('GET', $url);
+        $response = $self->plugin->request($self->plugin->current_step_name, $request);
+        if ($response->is_success) {
+            my $values = decode_json($response->content)->{values};
+            $self->plugin->logger->info("Got Incident", $values);
+            $self->plugin->ec->setOutputParameter('incident', JSON->new->pretty->utf8->encode($values));
+            $self->plugin->ec->setOutputParameter('entryId', $entry_id);
+        }
+        else {
+            $self->plugin->bail_out("Request failed: " . $response->status_line);
+        }
     }
     else {
         $self->plugin->warning('URL not found for created incident.');

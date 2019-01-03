@@ -14,5 +14,9 @@ EC::Remedy::Plugin->new->run_step('create incident');
         timeLimitUnits: 'minutes'
     
     // [REST Plugin Wizard step ends]
+    // [Output Parameters Begin]
+formalOutputParameter 'entryId', description: 'Entry ID of the incident'
+formalOutputParameter 'incident', description: 'JSON representation of the incident'
 
+    // [Output Parameters End]
 }
