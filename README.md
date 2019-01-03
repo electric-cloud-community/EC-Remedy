@@ -21,6 +21,10 @@ Creates Remedy incident.
 
 Updates Remedy incident.
 
+## PollEntry
+
+Polls Remedy entry until it gets to the desired status
+
 
 
 # Building the plugin

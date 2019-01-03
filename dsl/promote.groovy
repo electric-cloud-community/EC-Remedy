@@ -17,12 +17,15 @@ def pluginDir = getProperty("/projects/$pluginName/pluginDir").value
 def stepsWithAttachedCredentials = [
   [procedureName: 'CreateIncident', stepName: 'create incident'],
   [procedureName: 'GetIncidentStatus', stepName: 'get incident status'],
+  [procedureName: 'PollEntry', stepName: 'PollEntry'],
   [procedureName: 'QueryEntries', stepName: 'query entries'],
   [procedureName: 'UpdateIncident', stepName: 'update incident']
 ]
 // ** end steps with attached credentials
 
 project pluginName, {
+
+    property 'ec_formXmlCompliant', value: 'true'
 
 	loadPluginProperties(pluginDir, pluginName)
 	loadProcedures(pluginDir, pluginKey, pluginName, stepsWithAttachedCredentials)
@@ -35,6 +38,7 @@ project pluginName, {
 				property 'order', value: '1'
 			}
 		}
+        configLocation = 'ec_plugin_cfgs'
 	}
 
 }
