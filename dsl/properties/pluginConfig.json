@@ -44,7 +44,7 @@
          "default" : "/myJob/entriesList"
       },
       "name" : "GetIncidentStatus",
-      "description" : "Retrieves a list of Remedy entries.",
+      "description" : "Get Remedy incident details.",
       "stepName" : "get incident status",
       "parameters" : [
          {
@@ -162,6 +162,70 @@
          {
             "required" : "1",
             "in" : "body",
+            "documentation" : "An incident description.",
+            "label" : "Description",
+            "type" : "textarea",
+            "property" : "description"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident status.",
+            "label" : "Status",
+            "type" : "entry",
+            "property" : "incident_status"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident urgency.",
+            "label" : "Urgency",
+            "type" : "entry",
+            "property" : "urgency"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident impact.",
+            "label" : "Impact",
+            "type" : "entry",
+            "property" : "impact"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident First Name.",
+            "label" : "First Name",
+            "type" : "entry",
+            "property" : "first_name"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident Last Name.",
+            "label" : "Last Name",
+            "type" : "entry",
+            "property" : "last_name"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident service type.",
+            "label" : "Service Type",
+            "type" : "entry",
+            "property" : "service_type"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An incident reported source.",
+            "label" : "Reported Source",
+            "type" : "entry",
+            "property" : "reported_source"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
             "documentation" : "Fields for incident (JSON object)",
             "label" : "Fields",
             "type" : "textarea",
@@ -169,6 +233,14 @@
          }
       ],
       "fields" : [
+         "description",
+         "incident_status",
+         "urgency",
+         "impact",
+         "first_name",
+         "last_name",
+         "service_type",
+         "reported_source",
          "values"
       ],
       "hasConfig" : "true",
@@ -219,7 +291,7 @@
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
       "contentType" : "application/json",
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{request_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{request_id}",
       "attachCredentials" : "true"
    },
    "create entry" : {
@@ -245,7 +317,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Fields for incident (JSON object)",
+            "documentation" : "Fields for entry (JSON object)",
             "label" : "Fields",
             "type" : "textarea",
             "property" : "values"
@@ -294,7 +366,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Fields for incident (JSON object)",
+            "documentation" : "Fields for entry (JSON object)",
             "label" : "Fields",
             "type" : "textarea",
             "property" : "values"
@@ -312,6 +384,48 @@
       ],
       "contentType" : "application/json",
       "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}/#{entry_id}",
+      "attachCredentials" : "true"
+   },
+   "update change request" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/entriesList"
+      },
+      "name" : "UpdateChangeRequest",
+      "description" : "Updates Remedy change request.",
+      "stepName" : "update change request",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Request ID",
+            "label" : "Request ID",
+            "type" : "entry",
+            "property" : "request_id"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Fields for change request (JSON object)",
+            "label" : "Fields",
+            "type" : "textarea",
+            "property" : "values"
+         }
+      ],
+      "fields" : [
+         "request_id",
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "PUT",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "contentType" : "application/json",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface/#{request_id}",
       "attachCredentials" : "true"
    }
 }

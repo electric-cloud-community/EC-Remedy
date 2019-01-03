@@ -181,10 +181,58 @@ procedures:
         - propertySheet
       default: /myJob/entriesList
     parameters:
+      - property: description
+        type: textarea
+        label: Description
+        required: 1
+        in: body
+        documentation: An incident description.
+      - property: incident_status
+        type: entry
+        label: Status
+        required: 1
+        in: body
+        documentation: An incident status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 1
+        in: body
+        documentation: An incident urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 1
+        in: body
+        documentation: An incident impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 1
+        in: body
+        documentation: An incident First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 1
+        in: body
+        documentation: An incident Last Name.
+      - property: service_type
+        type: entry
+        label: Service Type
+        required: 1
+        in: body
+        documentation: An incident service type.
+      - property: reported_source
+        type: entry
+        label: Reported Source
+        required: 1
+        in: body
+        documentation: An incident reported source.
       - property: values
         type: textarea
         label: Fields
-        required: 1
+        required: 0
         in: body
         documentation: Fields for incident (JSON object)
 

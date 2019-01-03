@@ -11,10 +11,74 @@
   <type>entry</type>
 </formElement>
 <formElement>
+  <documentation>An incident description.</documentation>
+  <label>Description:</label>
+  <property>description</property>
+  <required>1</required>
+  <type>textarea</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident status.</documentation>
+  <label>Status:</label>
+  <property>incident_status</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident urgency.</documentation>
+  <label>Urgency:</label>
+  <property>urgency</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident impact.</documentation>
+  <label>Impact:</label>
+  <property>impact</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident First Name.</documentation>
+  <label>First Name:</label>
+  <property>first_name</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident Last Name.</documentation>
+  <label>Last Name:</label>
+  <property>last_name</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident service type.</documentation>
+  <label>Service Type:</label>
+  <property>service_type</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>An incident reported source.</documentation>
+  <label>Reported Source:</label>
+  <property>reported_source</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
   <documentation>Fields for incident (JSON object).</documentation>
   <label>Fields:</label>
   <property>values</property>
-  <required>1</required>
+  <required>0</required>
   <type>textarea</type>
   <value></value>
 </formElement>

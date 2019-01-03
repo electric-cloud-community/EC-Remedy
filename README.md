@@ -19,7 +19,7 @@ Updates Remedy entry.
 
 ## GetIncidentStatus
 
-Retrieves a list of Remedy entries.
+Get Remedy incident details.
 
 ## CreateIncident
 
@@ -32,6 +32,10 @@ Updates Remedy incident.
 ## Create Change Request
 
 Creates Remedy Change Request.
+
+## UpdateChangeRequest
+
+Updates Remedy change request.
 
 
 
