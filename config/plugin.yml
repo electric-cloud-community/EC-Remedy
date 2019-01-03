@@ -441,7 +441,7 @@ procedures:
     description: Updates Remedy change request.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface/#{request_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{request_id}'
     method: PUT
     hasConfig: true
     attachCredentials: true
@@ -458,9 +458,51 @@ procedures:
         label: Request ID
         required: 1
         documentation: Request ID
+      - property: description
+        type: textarea
+        label: Description
+        required: 0
+        in: body
+        documentation: An change request description.
+      - property: cr_status
+        type: entry
+        label: Status
+        required: 0
+        in: body
+        documentation: An change request status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 0
+        in: body
+        documentation: An change request urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 0
+        in: body
+        documentation: An change request impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 0
+        in: body
+        documentation: An change request First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 0
+        in: body
+        documentation: An change request Last Name.
+      - property: location_company
+        type: entry
+        label: Location Company
+        required: 0
+        in: body
+        documentation: An change request location company.
       - property: values
         type: textarea
         label: Fields
-        required: 1
+        required: 0
         in: body
         documentation: Fields for change request (JSON object)

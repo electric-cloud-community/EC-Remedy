@@ -470,7 +470,35 @@
                     <td>Request ID</td>
                 </tr>
                 <tr>
-                    <td class="required">Fields</td>
+                    <td>Description</td>
+                    <td>An change request description.</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>An change request status.</td>
+                </tr>
+                <tr>
+                    <td>Urgency</td>
+                    <td>An change request urgency.</td>
+                </tr>
+                <tr>
+                    <td>Impact</td>
+                    <td>An change request impact.</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>An change request First Name.</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>An change request Last Name.</td>
+                </tr>
+                <tr>
+                    <td>Location Company</td>
+                    <td>An change request location company.</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
                     <td>Fields for change request (JSON object)</td>
                 </tr>
                 <tr>
