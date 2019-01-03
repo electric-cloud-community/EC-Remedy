@@ -18,6 +18,7 @@ def stepsWithAttachedCredentials = [
   [procedureName: 'Create Change Request', stepName: 'create change request'],
   [procedureName: 'CreateEntry', stepName: 'create entry'],
   [procedureName: 'CreateIncident', stepName: 'create incident'],
+  [procedureName: 'GetEntry', stepName: 'get entry'],
   [procedureName: 'GetIncidentStatus', stepName: 'get incident status'],
   [procedureName: 'PollChangeRequest', stepName: 'poll change request'],
   [procedureName: 'PollEntry', stepName: 'PollEntry'],

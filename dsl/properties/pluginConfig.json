@@ -245,6 +245,40 @@
       },
       "stepName" : "create incident"
    },
+   "get entry" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Fetches Remedy entry with the specified form name and entry ID",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}",
+      "fields" : [
+         "entry_id",
+         "form_name"
+      ],
+      "hasConfig" : "true",
+      "method" : "GET",
+      "name" : "GetEntry",
+      "outputParameters" : {
+         "entry" : "JSON representation of the incident",
+         "entryId" : "Entry ID"
+      },
+      "parameters" : [
+         {
+            "documentation" : "Entry ID of the entry to be queried",
+            "label" : "Entry ID",
+            "property" : "entry_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Entry form name, e.g. CHG:ChangeInterface_Create",
+            "label" : "Form Name",
+            "property" : "form_name",
+            "required" : "1",
+            "type" : "entry"
+         }
+      ],
+      "stepName" : "get entry"
+   },
    "get incident status" : {
       "attachCredentials" : "true",
       "description" : "Get Remedy incident details.",

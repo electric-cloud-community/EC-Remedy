@@ -74,7 +74,8 @@
 <li><a href="#PollIncident">PollIncident</a></li>
 <li><a href="#PollChangeRequest">PollChangeRequest</a></li>
 <li><a href="#CreateChangeRequest">Create Change Request</a></li>
-<li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li><!-- TOC END -->
+<li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li>
+<li><a href="#GetEntry">GetEntry</a></li><!-- TOC END -->
 >>>>>>> 27d2a628c081b915bec425a40d64600d8d58f1d1
 =======
 >>>>>>> 7382f5ecf4df15e744e31b16437a41888de97be8
@@ -632,7 +633,7 @@
                 <!-- PollChangeRequest METADATA BEGIN -->
             <h3>PollChangeRequest</h3>
             <p>Polls Remedy Change Request until it gets to the desired status</p>
-                <!-- PollChangeRequest METADATA END -->
+        <!-- PollChangeRequest METADATA END -->
                 <!-- PollChangeRequest BEGIN -->
             <table class="grid">
                 <thead>
@@ -664,7 +665,38 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- PollChangeRequest END -->
+        <!-- PollChangeRequest END -->
+            </div>
+            <div id="GetEntry">
+                <a name="GetEntry" id="GetEntry" />
+                <!-- GetEntry METADATA BEGIN -->
+            <h3>GetEntry</h3>
+            <p>Fetches Remedy entry with the specified form name and entry ID</p>
+        <!-- GetEntry METADATA END -->
+                <!-- GetEntry BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be queried</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Entry form name, e.g. CHG:ChangeInterface_Create</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetEntry END -->
             </div>
 <!-- PROCEDURES END -->
     </div>

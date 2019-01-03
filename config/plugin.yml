@@ -304,7 +304,6 @@ procedures:
         required: 0
         type: entry
 
-
   - name: PollIncident
     stepName: poll incident
     description: Polls Remedy Incident until it gets to the desired status
@@ -338,7 +337,6 @@ procedures:
         documentation: Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.
         required: 0
         type: entry
-
 
   - name: PollChangeRequest
     stepName: poll change request
@@ -470,3 +468,27 @@ procedures:
         required: 1
         in: body
         documentation: Fields for change request (JSON object)
+
+
+  - name: GetEntry
+    stepName: get entry
+    description: Fetches Remedy entry with the specified form name and entry ID
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      entry: 'JSON representation of the incident'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be queried
+        required: 1
+      - property: form_name
+        type: entry
+        label: Form Name
+        documentation: Entry form name, e.g. CHG:ChangeInterface_Create
+        required: 1

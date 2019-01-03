@@ -49,6 +49,10 @@ Creates Remedy Change Request.
 
 Updates Remedy change request.
 
+## GetEntry
+
+Fetches Remedy entry with the specified form name and entry ID
+
 
 
 # Building the plugin
