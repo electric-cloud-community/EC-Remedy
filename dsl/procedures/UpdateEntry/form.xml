@@ -27,7 +27,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Fields for incident (JSON object).</documentation>
+  <documentation>Fields for entry (JSON object).</documentation>
   <label>Fields:</label>
   <property>values</property>
   <required>1</required>

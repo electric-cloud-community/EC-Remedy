@@ -91,7 +91,7 @@ sub define_processors {
     $self->define_processor('create entry',          'serialize_body', \&raw_body);
     $self->define_processor('update entry',          'serialize_body', \&raw_body);
     $self->define_processor('create incident',       'serialize_body', \&create_incident_body);
-    $self->define_processor('update incident',       'serialize_body', \&raw_body);
+    $self->define_processor('update incident',       'serialize_body', \&update_incident_body);
     $self->define_processor('create change request', 'serialize_body', \&raw_body);
 }
 
@@ -115,6 +115,29 @@ sub create_incident_body {
     $data->{values}->{'Urgency'}         = $body->{urgency};
     $data->{values}->{'Reported Source'} = $body->{reported_source};
     $data->{values}->{'Service_Type'}    = $body->{service_type};
+
+    my $json = encode_json($data);
+    return $json;
+}
+
+
+sub update_incident_body {
+    my ($self, $body) = @_;
+
+    my $data = { values => {} };
+    if($body->{values}) {
+        $data->{values} = decode_json($body->{values});
+        if(!$data->{values}->{'z1D_Action'}) {
+            $data->{values}->{'z1D_Action'} = 'MODIFY';
+        }
+    }
+
+    $data->{values}->{'Description'} = $body->{description}     if defined $body->{description}; 
+    $data->{values}->{'First_Name'}  = $body->{first_name}      if defined $body->{first_name}; 
+    $data->{values}->{'Last_Name'}   = $body->{last_name}       if defined $body->{last_name}; 
+    $data->{values}->{'Impact'}      = $body->{impact}          if defined $body->{impact}; 
+    $data->{values}->{'Status'}      = $body->{incident_status} if defined $body->{incident_status}; 
+    $data->{values}->{'Urgency'}     = $body->{urgency}         if defined $body->{urgency}; 
 
     my $json = encode_json($data);
     return $json;

@@ -15,9 +15,9 @@ EC::Remedy::Plugin->new->run_step('PollEntry');
     
     // [REST Plugin Wizard step ends]
     // [Output Parameters Begin]
+formalOutputParameter 'entry', description: 'JSON representation of the entry'
 formalOutputParameter 'entryId', description: 'Entry ID'
 formalOutputParameter 'status', description: 'Entry status'
-formalOutputParameter 'entry', description: 'JSON representation of the entry'
 
     // [Output Parameters End]
 }

@@ -17,7 +17,7 @@ Retrieves a list of Remedy entries.
 
 Updates Remedy entry.
 
-## GetIncidentStatus
+## GetIncident
 
 Get Remedy incident details.
 

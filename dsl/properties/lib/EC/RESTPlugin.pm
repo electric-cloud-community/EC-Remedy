@@ -397,17 +397,6 @@ sub save_parsed_data {
     my ($self, $step_name, $parsed_data) = @_;
 
     my $config = $self->config->{$step_name}->{resultProperty};
-    if ($self->config->{$step_name}->{outputParameter}) {
-        my $param_name = $self->config->{$step_name}->{outputParameter}->{name};
-        my $json = encode_json($parsed_data);
-        $json = decode('utf8', $json);
-        eval {
-            $self->ec->setOutputParameter($param_name, $json);
-            1;
-        } or do {
-            $self->logger->debug("Cannot save output parameter: $@");
-        };
-    }
     return unless $config && $config->{show};
 
     my $property_name = $self->parameters($step_name)->{+RESULT_PROPERTY_SHEET_FIELD};
@@ -455,7 +444,6 @@ sub save_parsed_data {
     else {
         $self->bail_out("Cannot process format $selected_format: not implemented");
     }
-
 }
 
 sub fix_propertysheet_forbidden_key{

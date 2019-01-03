@@ -13,6 +13,38 @@
                 </tr>
                 <tr>
                     <td class="required">Form Name</td>
+                    <td>Remedy form name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for entry (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+         -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
                     <td>Name of the form to receive entries for.</td>
                 </tr>
                 <tr>
@@ -21,7 +53,42 @@
                 </tr>
                 <tr>
                     <td>Fields</td>
-                    <td>Selects what parts of the JSON document to return e.g. fieldName1, fieldName2</td>
+                    <td>Selects what parts of the JSON document to return e.g. fieldName
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Remedy form name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Remedy entry ID.</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for entry (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        , fieldName2</td>
                 </tr>
                 <tr>
                     <td>Expand</td>
@@ -37,9 +104,168 @@
                 </tr>
                  </tbody>
             </table>
-         -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+        .0 Transitional//EN" "http://www.w3.org/TR/xhtml
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Incident ID</td>
+                    <td>Entry ID of an incident.</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
+                    <td>Selects what parts of the JSON document to return e.g. fieldName
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>An incident description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Status</td>
+                    <td>An incident status.</td>
+                </tr>
+                <tr>
+                    <td class="required">Urgency</td>
+                    <td>An incident urgency.</td>
+                </tr>
+                <tr>
+                    <td class="required">Impact</td>
+                    <td>An incident impact.</td>
+                </tr>
+                <tr>
+                    <td class="required">First Name</td>
+                    <td>An incident First Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Last Name</td>
+                    <td>An incident Last Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Service Type</td>
+                    <td>An incident service type.</td>
+                </tr>
+                <tr>
+                    <td class="required">Reported Source</td>
+                    <td>An incident reported source.</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
+                    <td>Fields for incident (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        , fieldName2</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        /DTD/xhtml
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Request ID</td>
+                    <td>Request ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for incident (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        -transitional.dtd">
+<html xmlns="http://www.w3.org/
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be updated</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Form name, e.g. HPD:IncidentInterface_Create</td>
+                </tr>
+                <tr>
+                    <td class="required">Status Field</td>
+                    <td>Field that contains the entry status</td>
+                </tr>
+                <tr>
+                    <td class="required">Desired Status</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="required">Polling Interval</td>
+                    <td>Polling interval in seconds</td>
+                </tr>
+                <tr>
+                    <td>Polling Timeout</td>
+                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                </tr>
+                 </tbody>
+            </table>
+        999/xhtml">
 <head>
     <meta content="text/html; charset=us-ascii" http-equiv="content-type" />
     <title><!-- TITLE BEGIN -->Electric Flow integration for the BMC Remedy System<!-- TITLE END --></title>
@@ -62,7 +288,15 @@
 <!-- LINKS END -->
         <h1>Contents</h1>
         <ul>
-
+        <!-- TOC BEGIN --><li><a href="#CreateEntry">CreateEntry</a></li>
+<li><a href="#QueryEntries">QueryEntries</a></li>
+<li><a href="#UpdateEntry">UpdateEntry</a></li>
+<li><a href="#GetIncident">GetIncident</a></li>
+<li><a href="#CreateIncident">CreateIncident</a></li>
+<li><a href="#UpdateIncident">UpdateIncident</a></li>
+<li><a href="#PollEntry">PollEntry</a></li>
+<li><a href="#CreateChangeRequest">Create Change Request</a></li>
+<li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li><!-- TOC END -->
         </ul>
         <h2>Configuration</h2>
         <div id="CreateConfiguration">
@@ -148,12 +382,155 @@
         </div>
         <h1>Procedures</h1>
         <!-- PROCEDURES BEGIN -->
+            <div id="CreateChangeRequest">
+                <a name="CreateChangeRequest" id="CreateChangeRequest" />
+                <!-- CreateChangeRequest METADATA BEGIN -->
+            <h3>Create Change Request</h3>
+            <p>Creates Remedy Change Request.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html</a><br /><a href="https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html" target="_blank">https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html</a><br/> for reference.</p><!-- CreateChangeRequest METADATA END -->
+                <!-- CreateChangeRequest BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>An change request description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Status</td>
+                    <td>An change request status.</td>
+                </tr>
+                <tr>
+                    <td class="required">Urgency</td>
+                    <td>An change request urgency.</td>
+                </tr>
+                <tr>
+                    <td class="required">Impact</td>
+                    <td>An change request impact.</td>
+                </tr>
+                <tr>
+                    <td class="required">First Name</td>
+                    <td>An change request First Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Last Name</td>
+                    <td>An change request Last Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Service Type</td>
+                    <td>An change request service type.</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for change request (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- CreateChangeRequest END -->
+            </div>
+            <div id="UpdateChangeRequest">
+                <a name="UpdateChangeRequest" id="UpdateChangeRequest" />
+                <!-- UpdateChangeRequest METADATA BEGIN -->
+            <h3>UpdateChangeRequest</h3>
+            <p>Updates Remedy change request.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateChangeRequest</a> for reference.</p><!-- UpdateChangeRequest METADATA END -->
+                <!-- UpdateChangeRequest BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Request ID</td>
+                    <td>Request ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for change request (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- UpdateChangeRequest END -->
+            </div>
+            <div id="CreateEntry">
+                <a name="CreateEntry" id="CreateEntry" />
+                <!-- CreateEntry METADATA BEGIN -->
+            <h3>CreateEntry</h3>
+            <p>Creates Remedy entry.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateEntry</a> for reference.</p>
+                <!-- CreateEntry METADATA END -->
+                <!-- CreateEntry BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Remedy form name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for entry (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- CreateEntry END -->
+            </div>
             <div id="QueryEntries">
                 <a name="QueryEntries" id="QueryEntries" />
                 <!-- QueryEntries METADATA BEGIN -->
             <h3>QueryEntries</h3>
             <p>Retrieves a list of Remedy entries.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">QueryEntries</a> for reference.</p><!-- QueryEntries METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">QueryEntries</a> for reference.</p>
+                <!-- QueryEntries METADATA END -->
                 <!-- QueryEntries BEGIN -->
             <table class="grid">
                 <thead>
@@ -193,34 +570,16 @@
                 </tr>
                  </tbody>
             </table>
-        <!-- QueryEntries END -->
+                <!-- QueryEntries END -->
             </div>
-
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Configuration Name</td>
-                    <td>Previously defined plugin configuration.</td>
-                </tr>
-
-                </tr>
-                <tr>
-                    <td class="required">Property sheet name for results</td>
-                    <td>Results will be saved into this property/property sheet.</td>
-                </tr>
-                <tr>
-                    <td class="required">Result format</td>
-                    <td>Format to save request results.</td>
-                </tr>
-                 </tbody>
-            </table>
-
+            <div id="UpdateEntry">
+                <a name="UpdateEntry" id="UpdateEntry" />
+                <!-- UpdateEntry METADATA BEGIN -->
+            <h3>UpdateEntry</h3>
+            <p>Updates Remedy entry.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p>
+                <!-- UpdateEntry METADATA END -->
+                <!-- UpdateEntry BEGIN -->
             <table class="grid">
                 <thead>
                     <tr>
@@ -234,7 +593,16 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-
+                    <td class="required">Form Name</td>
+                    <td>Remedy form name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Remedy entry ID.</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for entry (JSON object)</td>
                 </tr>
                 <tr>
                     <td class="required">Property sheet name for results</td>
@@ -246,7 +614,226 @@
                 </tr>
                  </tbody>
             </table>
-
+                <!-- UpdateEntry END -->
+            </div>
+            <div id="GetIncident">
+                <a name="GetIncident" id="GetIncident" />
+                <!-- GetIncident METADATA BEGIN -->
+            <h3>GetIncident</h3>
+            <p>Get Remedy incident details.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">GetIncident</a> for reference.</p>
+                <!-- GetIncident METADATA END -->
+                <!-- GetIncident BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Incident ID</td>
+                    <td>Entry ID of an incident.</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
+                    <td>Selects what parts of the JSON document to return e.g. fieldName1, fieldName2</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- GetIncident END -->
+            </div>
+            <div id="CreateIncident">
+                <a name="CreateIncident" id="CreateIncident" />
+                <!-- CreateIncident METADATA BEGIN -->
+            <h3>CreateIncident</h3>
+            <p>Creates Remedy incident.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateIncident</a> for reference.</p>
+                <!-- CreateIncident METADATA END -->
+                <!-- CreateIncident BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>An incident description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Status</td>
+                    <td>An incident status.</td>
+                </tr>
+                <tr>
+                    <td class="required">Urgency</td>
+                    <td>An incident urgency.</td>
+                </tr>
+                <tr>
+                    <td class="required">Impact</td>
+                    <td>An incident impact.</td>
+                </tr>
+                <tr>
+                    <td class="required">First Name</td>
+                    <td>An incident First Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Last Name</td>
+                    <td>An incident Last Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Service Type</td>
+                    <td>An incident service type.</td>
+                </tr>
+                <tr>
+                    <td class="required">Reported Source</td>
+                    <td>An incident reported source.</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
+                    <td>Fields for incident (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- CreateIncident END -->
+            </div>
+            <div id="UpdateIncident">
+                <a name="UpdateIncident" id="UpdateIncident" />
+                <!-- UpdateIncident METADATA BEGIN -->
+            <h3>UpdateIncident</h3>
+            <p>Updates Remedy incident.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateIncident</a> for reference.</p>
+                <!-- UpdateIncident METADATA END -->
+                <!-- UpdateIncident BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Request ID</td>
+                    <td>Request ID</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>An incident description.</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>An incident status.</td>
+                </tr>
+                <tr>
+                    <td>Urgency</td>
+                    <td>An incident urgency.</td>
+                </tr>
+                <tr>
+                    <td>Impact</td>
+                    <td>An incident impact.</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>An incident First Name.</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>An incident Last Name.</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
+                    <td>Fields for incident (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- UpdateIncident END -->
+            </div>
+            <div id="PollEntry">
+                <a name="PollEntry" id="PollEntry" />
+                <!-- PollEntry METADATA BEGIN -->
+            <h3>PollEntry</h3>
+            <p>Polls Remedy entry until it gets to the desired status</p>
+                <!-- PollEntry METADATA END -->
+                <!-- PollEntry BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be updated</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Form name, e.g. HPD:IncidentInterface_Create</td>
+                </tr>
+                <tr>
+                    <td class="required">Status Field</td>
+                    <td>Field that contains the entry status</td>
+                </tr>
+                <tr>
+                    <td class="required">Desired Status</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="required">Polling Interval</td>
+                    <td>Polling interval in seconds</td>
+                </tr>
+                <tr>
+                    <td>Polling Timeout</td>
+                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- PollEntry END -->
             </div>
 <!-- PROCEDURES END -->
     </div>
