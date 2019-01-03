@@ -123,6 +123,9 @@ sub poll_entry {
         $self->{polling_elapsed} = $elapsed;
         $self->plugin->run_one_step($self->plugin->current_step_name);
     }
+    else {
+        $self->plugin->set_summary("Status is $status");
+    }
 }
 
 sub expand_generic_parameters {
