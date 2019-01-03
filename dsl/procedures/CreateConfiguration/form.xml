@@ -35,7 +35,7 @@
         <label>Remedy Endpoint:</label>
         <property>endpoint</property>
         <required>1</required>
-        <documentation>BMC Remedy URL.</documentation>
+        <documentation>BMC Remedy URL, e.g. http://myserver:8008.</documentation>
     </formElement>
     <formElement>
         <type>credential</type>

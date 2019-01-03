@@ -14,6 +14,36 @@ name:
 main:
 version:
 procedures:
+  - name: CreateEntry
+    stepName: create entry
+    description: Creates Remedy entry.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form}'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: form
+        type: entry
+        label: Form Name
+        required: 1
+        documentation: Remedy form name.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 1
+        in: body
+        documentation: Fields for entry (JSON object)
+
   - name: QueryEntries
     stepName: query entries
     description: Retrieves a list of Remedy entries.
@@ -63,3 +93,416 @@ procedures:
         required: 0
         in: query
         documentation: Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog
+
+  - name: UpdateEntry
+    stepName: update entry
+    description: Updates Remedy entry.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form}/#{entry_id}'
+    method: PUT
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: form
+        type: entry
+        label: Form Name
+        required: 1
+        documentation: Remedy form name.
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        required: 1
+        documentation: Remedy entry ID.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 1
+        in: body
+        documentation: Fields for entry (JSON object)
+
+  - name: GetIncident
+    stepName: get incident status
+    description: Get Remedy incident details.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{incident_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: incident_id
+        type: entry
+        label: Incident ID
+        documentation: Entry ID of an incident.
+        required: 1
+      - property: fields
+        type: entry
+        label: Fields
+        required: 0
+        in: query
+        documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
+
+  - name: CreateIncident
+    stepName: create incident
+    description: Creates Remedy incident.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: description
+        type: textarea
+        label: Description
+        required: 1
+        in: body
+        documentation: An incident description.
+      - property: incident_status
+        type: entry
+        label: Status
+        required: 1
+        in: body
+        documentation: An incident status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 1
+        in: body
+        documentation: An incident urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 1
+        in: body
+        documentation: An incident impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 1
+        in: body
+        documentation: An incident First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 1
+        in: body
+        documentation: An incident Last Name.
+      - property: service_type
+        type: entry
+        label: Service Type
+        required: 1
+        in: body
+        documentation: An incident service type.
+      - property: reported_source
+        type: entry
+        label: Reported Source
+        required: 1
+        in: body
+        documentation: An incident reported source.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 0
+        in: body
+        documentation: Fields for incident (JSON object)
+
+  - name: UpdateIncident
+    stepName: update incident
+    description: Updates Remedy incident.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{request_id}'
+    method: PUT
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: request_id
+        type: entry
+        label: Request ID
+        required: 1
+        documentation: Request ID
+      - property: description
+        type: textarea
+        label: Description
+        required: 0
+        in: body
+        documentation: An incident description.
+      - property: incident_status
+        type: entry
+        label: Status
+        required: 0
+        in: body
+        documentation: An incident status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 0
+        in: body
+        documentation: An incident urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 0
+        in: body
+        documentation: An incident impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 0
+        in: body
+        documentation: An incident First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 0
+        in: body
+        documentation: An incident Last Name.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 0
+        in: body
+        documentation: Fields for incident (JSON object)
+
+  - name: PollEntry
+    stepName: PollEntry
+    description: Polls Remedy entry until it gets to the desired status
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      status: Entry status
+      entry: 'JSON representation of the entry'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be updated
+        required: 1
+      - property: form_name
+        type: entry
+        label: Form Name
+        documentation: Form name, e.g. HPD:IncidentInterface_Create
+        required: 1
+      - property: status_field
+        type: entry
+        default: Status
+        required: 1
+        label: Status Field
+        documentation: Field that contains the entry status
+      - property: expected_status
+        type: entry
+        required: 1
+        label: Desired Status
+      - property: poll_interval
+        type: entry
+        label: Polling Interval
+        documentation: Polling interval in seconds
+        required: 1
+        default: 300
+      - property: polling_timeout
+        label: Polling Timeout
+        documentation: Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.
+        required: 0
+        type: entry
+
+  - name: GetChangeRequest
+    stepName: get change request
+    description: Get Remedy change request details.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: cr_id
+        type: entry
+        label: Change Request ID
+        documentation: Entry ID of an incident.
+        required: 1
+      - property: fields
+        type: entry
+        label: Fields
+        required: 0
+        in: query
+        documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
+
+  - name: Create Change Request
+    stepName: create change request
+    description: Creates Remedy Change Request.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+      - https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: description
+        type: textarea
+        label: Description
+        required: 1
+        in: body
+        documentation: An change request description.
+      - property: cr_status
+        type: entry
+        label: Status
+        required: 1
+        in: body
+        documentation: An change request status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 1
+        in: body
+        documentation: An change request urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 1
+        in: body
+        documentation: An change request impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 1
+        in: body
+        documentation: An change request First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 1
+        in: body
+        documentation: An change request Last Name.
+      - property: location_company
+        type: entry
+        label: Location Company
+        required: 1
+        in: body
+        documentation: An change request location company.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 0
+        in: body
+        documentation: Fields for change request (JSON object)
+
+  - name: UpdateChangeRequest
+    stepName: update change request
+    description: Updates Remedy change request.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{request_id}'
+    method: PUT
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: request_id
+        type: entry
+        label: Request ID
+        required: 1
+        documentation: Request ID
+      - property: description
+        type: textarea
+        label: Description
+        required: 0
+        in: body
+        documentation: An change request description.
+      - property: cr_status
+        type: entry
+        label: Status
+        required: 0
+        in: body
+        documentation: An change request status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 0
+        in: body
+        documentation: An change request urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 0
+        in: body
+        documentation: An change request impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 0
+        in: body
+        documentation: An change request First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 0
+        in: body
+        documentation: An change request Last Name.
+      - property: location_company
+        type: entry
+        label: Location Company
+        required: 0
+        in: body
+        documentation: An change request location company.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 0
+        in: body
+        documentation: Fields for change request (JSON object)
