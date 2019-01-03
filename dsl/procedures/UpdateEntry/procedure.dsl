@@ -1,11 +1,11 @@
-procedure 'GetIncidentStatus', description: 'Get Remedy incident details', { // [PROCEDURE]
+procedure 'UpdateEntry', description: 'Updates Remedy entry', { // [PROCEDURE]
     // [REST Plugin Wizard step]
 
-    step 'get incident status',
+    step 'update entry',
         command: """
 \$[/myProject/scripts/preamble]
 use EC::Remedy::Plugin;
-EC::Remedy::Plugin->new->run_step('get incident status');
+EC::Remedy::Plugin->new->run_step('update entry');
 """,
         errorHandling: 'failProcedure',
         exclusiveMode: 'none',

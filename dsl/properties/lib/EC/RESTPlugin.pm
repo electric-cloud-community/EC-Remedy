@@ -455,7 +455,6 @@ sub save_parsed_data {
     else {
         $self->bail_out("Cannot process format $selected_format: not implemented");
     }
-
 }
 
 sub fix_propertysheet_forbidden_key{

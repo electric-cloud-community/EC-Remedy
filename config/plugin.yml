@@ -14,6 +14,36 @@ name:
 main:
 version:
 procedures:
+  - name: CreateEntry
+    stepName: create entry
+    description: Creates Remedy entry.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form}'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: form
+        type: entry
+        label: Form Name
+        required: 1
+        documentation: Remedy form name.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 1
+        in: body
+        documentation: Fields for entry (JSON object)
+
   - name: QueryEntries
     stepName: query entries
     description: Retrieves a list of Remedy entries.
@@ -64,12 +94,47 @@ procedures:
         in: query
         documentation: Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog
 
-  - name: GetIncidentStatus
-    stepName: get incident status
-    description: Retrieves a list of Remedy entries.
+  - name: UpdateEntry
+    stepName: update entry
+    description: Updates Remedy entry.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{incident_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form}/#{entry_id}'
+    method: PUT
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: form
+        type: entry
+        label: Form Name
+        required: 1
+        documentation: Remedy form name.
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        required: 1
+        documentation: Remedy entry ID.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 1
+        in: body
+        documentation: Fields for entry (JSON object)
+
+  - name: GetIncidentStatus
+    stepName: get incident status
+    description: Get Remedy incident details.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{incident_id}'
     method: GET
     hasConfig: true
     attachCredentials: true
@@ -83,7 +148,7 @@ procedures:
       - property: incident_id
         type: entry
         label: Incident ID
-        documentation: Search qualification. e.g. 'Submitter' = "Allen"
+        documentation: Entry ID of an incident.
         required: 1
       - property: fields
         type: entry
@@ -91,12 +156,6 @@ procedures:
         required: 0
         in: query
         documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
-      - property: expand
-        type: entry
-        label: Expand
-        required: 0
-        in: query
-        documentation: Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog
 
   - name: CreateIncident
     stepName: create incident
@@ -116,6 +175,54 @@ procedures:
         - propertySheet
       default: /myJob/entriesList
     parameters:
+      - property: description
+        type: textarea
+        label: Description
+        required: 1
+        in: body
+        documentation: An incident description.
+      - property: incident_status
+        type: entry
+        label: Status
+        required: 1
+        in: body
+        documentation: An incident status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 1
+        in: body
+        documentation: An incident urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 1
+        in: body
+        documentation: An incident impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 1
+        in: body
+        documentation: An incident First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 1
+        in: body
+        documentation: An incident Last Name.
+      - property: service_type
+        type: entry
+        label: Service Type
+        required: 1
+        in: body
+        documentation: An incident service type.
+      - property: reported_source
+        type: entry
+        label: Reported Source
+        required: 1
+        in: body
+        documentation: An incident reported source.
       - property: values
         type: textarea
         label: Fields
@@ -128,7 +235,7 @@ procedures:
     description: Updates Remedy incident.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{entry_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{request_id}'
     method: PUT
     hasConfig: true
     attachCredentials: true
@@ -140,15 +247,15 @@ procedures:
         - propertySheet
       default: /myJob/entriesList
     parameters:
-      - property: entry_id
+      - property: request_id
         type: entry
-        label: Entry ID
+        label: Request ID
         required: 1
-        documentation: ID of the incident entry
+        documentation: Request ID
       - property: values
         type: textarea
         label: Fields
-        required: 0
+        required: 1
         in: body
         documentation: Fields for incident (JSON object)
 
@@ -197,3 +304,99 @@ procedures:
         required: 0
         type: entry
 
+  - name: Create Change Request
+    stepName: create change request
+    description: Creates Remedy Change Request.
+    # http://localhost:8008/api/arsys/v1/entry/SimpleForm
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+      - https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: description
+        type: textarea
+        label: Description
+        required: 1
+        in: body
+        documentation: An change request description.
+      - property: cr_status
+        type: entry
+        label: Status
+        required: 1
+        in: body
+        documentation: An change request status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 1
+        in: body
+        documentation: An change request urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 1
+        in: body
+        documentation: An change request impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 1
+        in: body
+        documentation: An change request First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 1
+        in: body
+        documentation: An change request Last Name.
+      - property: service_type
+        type: entry
+        label: Service Type
+        required: 1
+        in: body
+        documentation: An change request service type.
+      - property: values
+        type: textarea
+        label: Fields
+        required: 1
+        in: body
+        documentation: Fields for change request (JSON object)
+
+  - name: UpdateChangeRequest
+    stepName: update change request
+    description: Updates Remedy change request.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface/#{request_id}'
+    method: PUT
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: request_id
+        type: entry
+        label: Request ID
+        required: 1
+        documentation: Request ID
+      - property: values
+        type: textarea
+        label: Fields
+        required: 1
+        in: body
+        documentation: Fields for change request (JSON object)

@@ -86,10 +86,9 @@ sub define_hooks {
 
     # Inserting necessary parameters
     $self->define_hook('*', 'request', \&expand_generic_parameters);
-
     $self->define_hook('*', 'response', \&parse_json_error);
-
-    $self->define_hook('PollEntry', 'after', \&poll_entry);
+    $self->define_hook('poll entry', 'after', \&poll_entry);
+    $self->define_hook('create incident', 'response', \&create_incident_response);
 }
 
 
@@ -166,6 +165,21 @@ sub parse_json_error {
     my $message = $json->{message};
     if ($message) {
         $self->plugin->bail_out($message);
+    }
+}
+
+
+sub create_incident_response {
+    my ($self, $response) = @_;
+
+    return if $response->is_error;
+    my $url = $response->header('Location');
+
+    if ($url) {
+        $self->plugin->ec()->setProperty('/myJobStep/URL', $url);
+    }
+    else {
+        $self->plugin->warning('URL not found for created incident.');
     }
 }
 1;

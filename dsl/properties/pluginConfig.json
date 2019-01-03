@@ -1,100 +1,299 @@
 {
-   "update incident" : {
-      "stepName" : "update incident",
-      "description" : "Updates Remedy incident.",
-      "resultProperty" : {
-         "show" : "true",
-         "default" : "/myJob/entriesList",
-         "format" : [
-            "json",
-            "propertySheet"
-         ]
-      },
-      "name" : "UpdateIncident",
-      "parameters" : [
-         {
-            "property" : "entry_id",
-            "type" : "entry",
-            "documentation" : "ID of the incident entry",
-            "label" : "Entry ID",
-            "required" : "1"
-         },
-         {
-            "property" : "values",
-            "type" : "textarea",
-            "documentation" : "Fields for incident (JSON object)",
-            "in" : "body",
-            "required" : "0",
-            "label" : "Fields"
-         }
-      ],
+   "create change request" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Creates Remedy Change Request.",
       "documentationLinks" : [
-         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html",
+         "https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{entry_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create",
       "fields" : [
-         "entry_id",
+         "description",
+         "cr_status",
+         "urgency",
+         "impact",
+         "first_name",
+         "last_name",
+         "service_type",
          "values"
       ],
-      "contentType" : "application/json",
-      "attachCredentials" : "true",
       "hasConfig" : "true",
-      "method" : "PUT"
-   },
-   "get incident status" : {
-      "attachCredentials" : "true",
-      "fields" : [
-         "incident_id",
-         "fields",
-         "expand"
-      ],
-      "method" : "GET",
-      "hasConfig" : "true",
-      "description" : "Retrieves a list of Remedy entries.",
-      "stepName" : "get incident status",
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{incident_id}",
-      "documentationLinks" : [
-         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
-      ],
+      "method" : "POST",
+      "name" : "Create Change Request",
       "parameters" : [
          {
-            "type" : "entry",
-            "property" : "incident_id",
-            "documentation" : "Search qualification. e.g. 'Submitter' = \"Allen\"",
-            "label" : "Incident ID",
-            "required" : "1"
+            "documentation" : "An change request description.",
+            "in" : "body",
+            "label" : "Description",
+            "property" : "description",
+            "required" : "1",
+            "type" : "textarea"
          },
          {
-            "required" : "0",
-            "label" : "Fields",
-            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
-            "in" : "query",
-            "property" : "fields",
+            "documentation" : "An change request status.",
+            "in" : "body",
+            "label" : "Status",
+            "property" : "cr_status",
+            "required" : "1",
             "type" : "entry"
          },
          {
-            "property" : "expand",
-            "type" : "entry",
-            "in" : "query",
-            "documentation" : "Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog",
-            "label" : "Expand",
-            "required" : "0"
+            "documentation" : "An change request urgency.",
+            "in" : "body",
+            "label" : "Urgency",
+            "property" : "urgency",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request impact.",
+            "in" : "body",
+            "label" : "Impact",
+            "property" : "impact",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request First Name.",
+            "in" : "body",
+            "label" : "First Name",
+            "property" : "first_name",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request Last Name.",
+            "in" : "body",
+            "label" : "Last Name",
+            "property" : "last_name",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request service type.",
+            "in" : "body",
+            "label" : "Service Type",
+            "property" : "service_type",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Fields for change request (JSON object)",
+            "in" : "body",
+            "label" : "Fields",
+            "property" : "values",
+            "required" : "1",
+            "type" : "textarea"
          }
       ],
-      "name" : "GetIncidentStatus",
       "resultProperty" : {
+         "default" : "/myJob/entriesList",
          "format" : [
             "json",
             "propertySheet"
          ],
-         "default" : "/myJob/entriesList",
          "show" : "true"
-      }
+      },
+      "stepName" : "create change request"
    },
-   "PollEntry" : {
+   "create entry" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Creates Remedy entry.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}",
+      "fields" : [
+         "form",
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "POST",
+      "name" : "CreateEntry",
+      "parameters" : [
+         {
+            "documentation" : "Remedy form name.",
+            "label" : "Form Name",
+            "property" : "form",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Fields for entry (JSON object)",
+            "in" : "body",
+            "label" : "Fields",
+            "property" : "values",
+            "required" : "1",
+            "type" : "textarea"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "create entry"
+   },
+   "create incident" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Creates Remedy incident.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create",
+      "fields" : [
+         "description",
+         "incident_status",
+         "urgency",
+         "impact",
+         "first_name",
+         "last_name",
+         "service_type",
+         "reported_source",
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "POST",
+      "name" : "CreateIncident",
+      "parameters" : [
+         {
+            "documentation" : "An incident description.",
+            "in" : "body",
+            "label" : "Description",
+            "property" : "description",
+            "required" : "1",
+            "type" : "textarea"
+         },
+         {
+            "documentation" : "An incident status.",
+            "in" : "body",
+            "label" : "Status",
+            "property" : "incident_status",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident urgency.",
+            "in" : "body",
+            "label" : "Urgency",
+            "property" : "urgency",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident impact.",
+            "in" : "body",
+            "label" : "Impact",
+            "property" : "impact",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident First Name.",
+            "in" : "body",
+            "label" : "First Name",
+            "property" : "first_name",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident Last Name.",
+            "in" : "body",
+            "label" : "Last Name",
+            "property" : "last_name",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident service type.",
+            "in" : "body",
+            "label" : "Service Type",
+            "property" : "service_type",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident reported source.",
+            "in" : "body",
+            "label" : "Reported Source",
+            "property" : "reported_source",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Fields for incident (JSON object)",
+            "in" : "body",
+            "label" : "Fields",
+            "property" : "values",
+            "required" : "0",
+            "type" : "textarea"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "create incident"
+   },
+   "get incident status" : {
+      "attachCredentials" : "true",
+      "description" : "Get Remedy incident details.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{incident_id}",
+      "fields" : [
+         "incident_id",
+         "fields"
+      ],
       "hasConfig" : "true",
       "method" : "GET",
+      "name" : "GetIncidentStatus",
+      "parameters" : [
+         {
+            "documentation" : "Entry ID of an incident.",
+            "label" : "Incident ID",
+            "property" : "incident_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
+            "in" : "query",
+            "label" : "Fields",
+            "property" : "fields",
+            "required" : "0",
+            "type" : "entry"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "get incident status"
+   },
+   "options" : {
+      "noEmptyString" : "true"
+   },
+   "poll entry" : {
+      "attachCredentials" : "true",
       "contentType" : "application/json",
+      "description" : "Polls Remedy entry until it gets to the desired status",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}",
       "fields" : [
          "entry_id",
          "form_name",
@@ -103,81 +302,110 @@
          "poll_interval",
          "polling_timeout"
       ],
-      "attachCredentials" : "true",
-      "outputParameter" : {
-         "description" : "JSON representation of the entry",
-         "name" : "entry"
-      },
-      "parameters" : [
-         {
-            "label" : "Entry ID",
-            "required" : "1",
-            "documentation" : "Entry ID of the entry to be updated",
-            "type" : "entry",
-            "property" : "entry_id"
-         },
-         {
-            "label" : "Form Name",
-            "required" : "1",
-            "type" : "entry",
-            "property" : "form_name",
-            "documentation" : "Form name, e.g. HPD:IncidentInterface_Create"
-         },
-         {
-            "documentation" : "Field that contains the entry status",
-            "type" : "entry",
-            "property" : "status_field",
-            "label" : "Status Field",
-            "required" : "1",
-            "default" : "Status"
-         },
-         {
-            "required" : "1",
-            "label" : "Desired Status",
-            "type" : "entry",
-            "property" : "expected_status"
-         },
-         {
-            "property" : "poll_interval",
-            "type" : "entry",
-            "documentation" : "Polling interval in seconds",
-            "default" : "300",
-            "label" : "Polling Interval",
-            "required" : "1"
-         },
-         {
-            "required" : "0",
-            "label" : "Polling Timeout",
-            "documentation" : "Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.",
-            "type" : "entry",
-            "property" : "polling_timeout"
-         }
-      ],
+      "hasConfig" : "true",
+      "method" : "GET",
+      "name" : "PollEntry",
       "outputParameters" : {
+         "entry" : "JSON representation of the entry",
          "entryId" : "Entry ID",
          "status" : "Entry status"
       },
-      "name" : "PollEntry",
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}",
-      "stepName" : "PollEntry",
-      "description" : "Polls Remedy entry until it gets to the desired status"
-   },
-   "options" : {
-      "noEmptyString" : "true"
-   },
-   "create incident" : {
-      "method" : "POST",
-      "hasConfig" : "true",
-      "attachCredentials" : "true",
-      "fields" : [
-         "values"
+      "parameters" : [
+         {
+            "documentation" : "Entry ID of the entry to be updated",
+            "label" : "Entry ID",
+            "property" : "entry_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Form name, e.g. HPD:IncidentInterface_Create",
+            "label" : "Form Name",
+            "property" : "form_name",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "default" : "Status",
+            "documentation" : "Field that contains the entry status",
+            "label" : "Status Field",
+            "property" : "status_field",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "label" : "Desired Status",
+            "property" : "expected_status",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "default" : "300",
+            "documentation" : "Polling interval in seconds",
+            "label" : "Polling Interval",
+            "property" : "poll_interval",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.",
+            "label" : "Polling Timeout",
+            "property" : "polling_timeout",
+            "required" : "0",
+            "type" : "entry"
+         }
       ],
-      "contentType" : "application/json",
+      "stepName" : "poll entry"
+   },
+   "query entries" : {
+      "attachCredentials" : "true",
+      "description" : "Retrieves a list of Remedy entries.",
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create",
-      "name" : "CreateIncident",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}?fields=values(#{fields})&assoc=(#{expand})",
+      "fields" : [
+         "form",
+         "query",
+         "fields",
+         "expand"
+      ],
+      "hasConfig" : "true",
+      "method" : "GET",
+      "name" : "QueryEntries",
+      "parameters" : [
+         {
+            "documentation" : "Name of the form to receive entries for.",
+            "label" : "Form Name",
+            "property" : "form",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Search qualification. e.g. 'Submitter' = \"Allen\"",
+            "in" : "query",
+            "label" : "Query",
+            "property" : "query",
+            "required" : "0",
+            "type" : "textarea"
+         },
+         {
+            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
+            "in" : "query",
+            "label" : "Fields",
+            "property" : "fields",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog",
+            "in" : "query",
+            "label" : "Expand",
+            "property" : "expand",
+            "required" : "0",
+            "type" : "entry"
+         }
+      ],
       "resultProperty" : {
          "default" : "/myJob/entriesList",
          "format" : [
@@ -186,76 +414,140 @@
          ],
          "show" : "true"
       },
-      "parameters" : [
-         {
-            "documentation" : "Fields for incident (JSON object)",
-            "in" : "body",
-            "property" : "values",
-            "type" : "textarea",
-            "required" : "0",
-            "label" : "Fields"
-         }
-      ],
-      "description" : "Creates Remedy incident.",
-      "stepName" : "create incident"
+      "stepName" : "query entries"
    },
-   "query entries" : {
-      "hasConfig" : "true",
-      "method" : "GET",
-      "fields" : [
-         "form",
-         "query",
-         "fields",
-         "expand"
-      ],
+   "update change request" : {
       "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Updates Remedy change request.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface/#{request_id}",
+      "fields" : [
+         "request_id",
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "PUT",
+      "name" : "UpdateChangeRequest",
       "parameters" : [
          {
-            "label" : "Form Name",
+            "documentation" : "Request ID",
+            "label" : "Request ID",
+            "property" : "request_id",
             "required" : "1",
-            "property" : "form",
-            "type" : "entry",
-            "documentation" : "Name of the form to receive entries for."
-         },
-         {
-            "required" : "0",
-            "label" : "Query",
-            "type" : "textarea",
-            "property" : "query",
-            "documentation" : "Search qualification. e.g. 'Submitter' = \"Allen\"",
-            "in" : "query"
-         },
-         {
-            "type" : "entry",
-            "property" : "fields",
-            "in" : "query",
-            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
-            "label" : "Fields",
-            "required" : "0"
-         },
-         {
-            "label" : "Expand",
-            "required" : "0",
-            "in" : "query",
-            "documentation" : "Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog",
-            "property" : "expand",
             "type" : "entry"
+         },
+         {
+            "documentation" : "Fields for change request (JSON object)",
+            "in" : "body",
+            "label" : "Fields",
+            "property" : "values",
+            "required" : "1",
+            "type" : "textarea"
          }
       ],
       "resultProperty" : {
-         "show" : "true",
          "default" : "/myJob/entriesList",
          "format" : [
             "json",
             "propertySheet"
-         ]
+         ],
+         "show" : "true"
       },
-      "name" : "QueryEntries",
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}?fields=values(#{fields})&assoc=(#{expand})",
+      "stepName" : "update change request"
+   },
+   "update entry" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Updates Remedy entry.",
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "stepName" : "query entries",
-      "description" : "Retrieves a list of Remedy entries."
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}/#{entry_id}",
+      "fields" : [
+         "form",
+         "entry_id",
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "PUT",
+      "name" : "UpdateEntry",
+      "parameters" : [
+         {
+            "documentation" : "Remedy form name.",
+            "label" : "Form Name",
+            "property" : "form",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Remedy entry ID.",
+            "label" : "Entry ID",
+            "property" : "entry_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Fields for entry (JSON object)",
+            "in" : "body",
+            "label" : "Fields",
+            "property" : "values",
+            "required" : "1",
+            "type" : "textarea"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "update entry"
+   },
+   "update incident" : {
+      "attachCredentials" : "true",
+      "contentType" : "application/json",
+      "description" : "Updates Remedy incident.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{request_id}",
+      "fields" : [
+         "request_id",
+         "values"
+      ],
+      "hasConfig" : "true",
+      "method" : "PUT",
+      "name" : "UpdateIncident",
+      "parameters" : [
+         {
+            "documentation" : "Request ID",
+            "label" : "Request ID",
+            "property" : "request_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Fields for incident (JSON object)",
+            "in" : "body",
+            "label" : "Fields",
+            "property" : "values",
+            "required" : "1",
+            "type" : "textarea"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "update incident"
    }
 }
