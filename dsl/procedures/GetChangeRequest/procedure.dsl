@@ -1,11 +1,11 @@
-procedure 'GetIncidentStatus', description: 'Get Remedy incident details', { // [PROCEDURE]
+procedure 'GetChangeRequest', description: 'Get Remedy change request details', { // [PROCEDURE]
     // [REST Plugin Wizard step]
 
-    step 'get incident status',
+    step 'get change request',
         command: """
 \$[/myProject/scripts/preamble]
 use EC::Remedy::Plugin;
-EC::Remedy::Plugin->new->run_step('get incident status');
+EC::Remedy::Plugin->new->run_step('get change request');
 """,
         errorHandling: 'failProcedure',
         exclusiveMode: 'none',
@@ -14,5 +14,7 @@ EC::Remedy::Plugin->new->run_step('get incident status');
         timeLimitUnits: 'minutes'
     
     // [REST Plugin Wizard step ends]
+    // [Output Parameters Begin]
 
+    // [Output Parameters End]
 }

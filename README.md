@@ -17,7 +17,7 @@ Retrieves a list of Remedy entries.
 
 Updates Remedy entry.
 
-## GetIncidentStatus
+## GetIncident
 
 Get Remedy incident details.
 
@@ -40,6 +40,10 @@ Polls Remedy Incident until it gets to the desired status
 ## PollChangeRequest
 
 Polls Remedy Change Request until it gets to the desired status
+
+## GetChangeRequest
+
+Get Remedy change request details.
 
 ## Create Change Request
 

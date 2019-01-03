@@ -15,7 +15,7 @@
          "impact",
          "first_name",
          "last_name",
-         "service_type",
+         "location_company",
          "values"
       ],
       "hasConfig" : "true",
@@ -71,10 +71,10 @@
             "type" : "entry"
          },
          {
-            "documentation" : "An change request service type.",
+            "documentation" : "An change request location company.",
             "in" : "body",
-            "label" : "Service Type",
-            "property" : "service_type",
+            "label" : "Location Company",
+            "property" : "location_company",
             "required" : "1",
             "type" : "entry"
          },
@@ -83,7 +83,7 @@
             "in" : "body",
             "label" : "Fields",
             "property" : "values",
-            "required" : "1",
+            "required" : "0",
             "type" : "textarea"
          }
       ],
@@ -245,6 +245,47 @@
       },
       "stepName" : "create incident"
    },
+   "get change request" : {
+      "attachCredentials" : "true",
+      "description" : "Get Remedy change request details.",
+      "documentationLinks" : [
+         "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
+      ],
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}",
+      "fields" : [
+         "cr_id",
+         "fields"
+      ],
+      "hasConfig" : "true",
+      "method" : "GET",
+      "name" : "GetChangeRequest",
+      "parameters" : [
+         {
+            "documentation" : "Entry ID of an incident.",
+            "label" : "Change Request ID",
+            "property" : "cr_id",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Selects what parts of the JSON document to return e.g. fieldName1, fieldName2",
+            "in" : "query",
+            "label" : "Fields",
+            "property" : "fields",
+            "required" : "0",
+            "type" : "entry"
+         }
+      ],
+      "resultProperty" : {
+         "default" : "/myJob/entriesList",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "show" : "true"
+      },
+      "stepName" : "get change request"
+   },
    "get entry" : {
       "attachCredentials" : "true",
       "contentType" : "application/json",
@@ -279,7 +320,7 @@
       ],
       "stepName" : "get entry"
    },
-   "get incident status" : {
+   "get incident" : {
       "attachCredentials" : "true",
       "description" : "Get Remedy incident details.",
       "documentationLinks" : [
@@ -292,7 +333,7 @@
       ],
       "hasConfig" : "true",
       "method" : "GET",
-      "name" : "GetIncidentStatus",
+      "name" : "GetIncident",
       "parameters" : [
          {
             "documentation" : "Entry ID of an incident.",
@@ -318,7 +359,7 @@
          ],
          "show" : "true"
       },
-      "stepName" : "get incident status"
+      "stepName" : "get incident"
    },
    "options" : {
       "noEmptyString" : "true"
@@ -559,9 +600,16 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface/#{request_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{request_id}",
       "fields" : [
          "request_id",
+         "description",
+         "cr_status",
+         "urgency",
+         "impact",
+         "first_name",
+         "last_name",
+         "location_company",
          "values"
       ],
       "hasConfig" : "true",
@@ -576,11 +624,67 @@
             "type" : "entry"
          },
          {
+            "documentation" : "An change request description.",
+            "in" : "body",
+            "label" : "Description",
+            "property" : "description",
+            "required" : "0",
+            "type" : "textarea"
+         },
+         {
+            "documentation" : "An change request status.",
+            "in" : "body",
+            "label" : "Status",
+            "property" : "cr_status",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request urgency.",
+            "in" : "body",
+            "label" : "Urgency",
+            "property" : "urgency",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request impact.",
+            "in" : "body",
+            "label" : "Impact",
+            "property" : "impact",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request First Name.",
+            "in" : "body",
+            "label" : "First Name",
+            "property" : "first_name",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request Last Name.",
+            "in" : "body",
+            "label" : "Last Name",
+            "property" : "last_name",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An change request location company.",
+            "in" : "body",
+            "label" : "Location Company",
+            "property" : "location_company",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
             "documentation" : "Fields for change request (JSON object)",
             "in" : "body",
             "label" : "Fields",
             "property" : "values",
-            "required" : "1",
+            "required" : "0",
             "type" : "textarea"
          }
       ],
@@ -654,6 +758,12 @@
       "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{request_id}",
       "fields" : [
          "request_id",
+         "description",
+         "incident_status",
+         "urgency",
+         "impact",
+         "first_name",
+         "last_name",
          "values"
       ],
       "hasConfig" : "true",
@@ -668,11 +778,59 @@
             "type" : "entry"
          },
          {
+            "documentation" : "An incident description.",
+            "in" : "body",
+            "label" : "Description",
+            "property" : "description",
+            "required" : "0",
+            "type" : "textarea"
+         },
+         {
+            "documentation" : "An incident status.",
+            "in" : "body",
+            "label" : "Status",
+            "property" : "incident_status",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident urgency.",
+            "in" : "body",
+            "label" : "Urgency",
+            "property" : "urgency",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident impact.",
+            "in" : "body",
+            "label" : "Impact",
+            "property" : "impact",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident First Name.",
+            "in" : "body",
+            "label" : "First Name",
+            "property" : "first_name",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "An incident Last Name.",
+            "in" : "body",
+            "label" : "Last Name",
+            "property" : "last_name",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
             "documentation" : "Fields for incident (JSON object)",
             "in" : "body",
             "label" : "Fields",
             "property" : "values",
-            "required" : "1",
+            "required" : "0",
             "type" : "textarea"
          }
       ],

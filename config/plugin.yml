@@ -129,8 +129,8 @@ procedures:
         in: body
         documentation: Fields for entry (JSON object)
 
-  - name: GetIncidentStatus
-    stepName: get incident status
+  - name: GetIncident
+    stepName: get incident
     description: Get Remedy incident details.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
@@ -252,10 +252,46 @@ procedures:
         label: Request ID
         required: 1
         documentation: Request ID
+      - property: description
+        type: textarea
+        label: Description
+        required: 0
+        in: body
+        documentation: An incident description.
+      - property: incident_status
+        type: entry
+        label: Status
+        required: 0
+        in: body
+        documentation: An incident status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 0
+        in: body
+        documentation: An incident urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 0
+        in: body
+        documentation: An incident impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 0
+        in: body
+        documentation: An incident First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 0
+        in: body
+        documentation: An incident Last Name.
       - property: values
         type: textarea
         label: Fields
-        required: 1
+        required: 0
         in: body
         documentation: Fields for incident (JSON object)
 
@@ -372,6 +408,34 @@ procedures:
         required: 0
         type: entry
 
+  - name: GetChangeRequest
+    stepName: get change request
+    description: Get Remedy change request details.
+    documentationLinks:
+      - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/entriesList
+    parameters:
+      - property: cr_id
+        type: entry
+        label: Change Request ID
+        documentation: Entry ID of an incident.
+        required: 1
+      - property: fields
+        type: entry
+        label: Fields
+        required: 0
+        in: query
+        documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
+
   - name: Create Change Request
     stepName: create change request
     description: Creates Remedy Change Request.
@@ -427,16 +491,16 @@ procedures:
         required: 1
         in: body
         documentation: An change request Last Name.
-      - property: service_type
+      - property: location_company
         type: entry
-        label: Service Type
+        label: Location Company
         required: 1
         in: body
-        documentation: An change request service type.
+        documentation: An change request location company.
       - property: values
         type: textarea
         label: Fields
-        required: 1
+        required: 0
         in: body
         documentation: Fields for change request (JSON object)
 
@@ -445,7 +509,7 @@ procedures:
     description: Updates Remedy change request.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface/#{request_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{request_id}'
     method: PUT
     hasConfig: true
     attachCredentials: true
@@ -462,10 +526,52 @@ procedures:
         label: Request ID
         required: 1
         documentation: Request ID
+      - property: description
+        type: textarea
+        label: Description
+        required: 0
+        in: body
+        documentation: An change request description.
+      - property: cr_status
+        type: entry
+        label: Status
+        required: 0
+        in: body
+        documentation: An change request status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 0
+        in: body
+        documentation: An change request urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 0
+        in: body
+        documentation: An change request impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 0
+        in: body
+        documentation: An change request First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 0
+        in: body
+        documentation: An change request Last Name.
+      - property: location_company
+        type: entry
+        label: Location Company
+        required: 0
+        in: body
+        documentation: An change request location company.
       - property: values
         type: textarea
         label: Fields
-        required: 1
+        required: 0
         in: body
         documentation: Fields for change request (JSON object)
 

@@ -266,6 +266,7 @@ sub create_incident_response {
     return if $response->is_error;
     my $url = $response->header('Location');
 
+
     if ($url) {
         $self->plugin->ec()->setProperty('/myJobStep/URL', $url);
     }
