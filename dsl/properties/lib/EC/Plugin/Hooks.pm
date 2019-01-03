@@ -92,6 +92,7 @@ sub define_hooks {
     $self->define_hook('poll change request', 'after', \&poll_change_request);
     $self->define_hook('get entry', 'after', \&get_entry_parsed);
     $self->define_hook('create incident', 'response', \&create_incident_response);
+    $self->define_hook('create change request', 'response', \&create_change_request_response);
 }
 
 sub get_entry_parsed {
@@ -279,6 +280,37 @@ sub create_incident_response {
             my $values = decode_json($response->content)->{values};
             $self->plugin->logger->info("Got Incident", $values);
             $self->plugin->ec->setOutputParameter('incident', JSON->new->pretty->utf8->encode($values));
+            $self->plugin->ec->setOutputParameter('entryId', $entry_id);
+        }
+        else {
+            $self->plugin->bail_out("Request failed: " . $response->status_line);
+        }
+    }
+    else {
+        $self->plugin->warning('URL not found for created incident.');
+    }
+}
+
+
+sub create_change_request_response {
+    my ($self, $response) = @_;
+
+    return if $response->is_error;
+    my $url = $response->header('Location');
+
+    if ($url) {
+        $self->plugin->ec()->setProperty('/myJobStep/URL', $url);
+
+        my $uri = URI->new($url);
+        my @segments = reverse $uri->path_segments;
+        my $entry_id = $segments[0];
+
+        my $request = $self->plugin->get_new_http_request('GET', $url);
+        $response = $self->plugin->request($self->plugin->current_step_name, $request);
+        if ($response->is_success) {
+            my $values = decode_json($response->content)->{values};
+            $self->plugin->logger->info("Got Change Request", $values);
+            $self->plugin->ec->setOutputParameter('changeRequest', JSON->new->pretty->utf8->encode($values));
             $self->plugin->ec->setOutputParameter('entryId', $entry_id);
         }
         else {

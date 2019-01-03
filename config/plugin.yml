@@ -457,6 +457,9 @@ procedures:
         - json
         - propertySheet
       default: /myJob/entriesList
+    outputParameters:
+      changeRequest: "JSON representation of the change request"
+      entryId: 'Entry ID of the change request'
     parameters:
       - property: description
         type: textarea

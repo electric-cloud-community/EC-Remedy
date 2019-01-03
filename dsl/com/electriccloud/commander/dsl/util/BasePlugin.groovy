@@ -1,4 +1,3 @@
-// Version: Thu Oct 25 16:10:18 2018
 package com.electriccloud.commander.dsl.util
 
 import groovy.io.FileType
