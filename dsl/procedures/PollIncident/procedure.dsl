@@ -1,11 +1,11 @@
-procedure 'CreateIncident', description: 'Creates Remedy incident', { // [PROCEDURE]
+procedure 'PollIncident', description: 'Polls Remedy Incident until it gets to the desired status', { // [PROCEDURE]
     // [REST Plugin Wizard step]
 
-    step 'create incident',
+    step 'poll incident',
         command: """
 \$[/myProject/scripts/preamble]
 use EC::Remedy::Plugin;
-EC::Remedy::Plugin->new->run_step('create incident');
+EC::Remedy::Plugin->new->run_step('poll incident');
 """,
         errorHandling: 'failProcedure',
         exclusiveMode: 'none',
@@ -15,8 +15,9 @@ EC::Remedy::Plugin->new->run_step('create incident');
     
     // [REST Plugin Wizard step ends]
     // [Output Parameters Begin]
-formalOutputParameter 'entryId', description: 'Entry ID of the incident'
+formalOutputParameter 'entryId', description: 'Entry ID'
 formalOutputParameter 'incident', description: 'JSON representation of the incident'
+formalOutputParameter 'status', description: 'Entry status'
 
     // [Output Parameters End]
 }

@@ -33,6 +33,14 @@ Updates Remedy incident.
 
 Polls Remedy entry until it gets to the desired status
 
+## PollIncident
+
+Polls Remedy Incident until it gets to the desired status
+
+## PollChangeRequest
+
+Polls Remedy Change Request until it gets to the desired status
+
 ## GetChangeRequest
 
 Get Remedy change request details.
@@ -44,6 +52,10 @@ Creates Remedy Change Request.
 ## UpdateChangeRequest
 
 Updates Remedy change request.
+
+## GetEntry
+
+Fetches Remedy entry with the specified form name and entry ID
 
 
 

@@ -130,7 +130,7 @@ procedures:
         documentation: Fields for entry (JSON object)
 
   - name: GetIncident
-    stepName: get incident status
+    stepName: get incident
     description: Get Remedy incident details.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
@@ -174,6 +174,9 @@ procedures:
         - json
         - propertySheet
       default: /myJob/entriesList
+    outputParameters:
+      incident: "JSON representation of the incident"
+      entryId: 'Entry ID of the incident'
     parameters:
       - property: description
         type: textarea
@@ -296,7 +299,7 @@ procedures:
         documentation: Fields for incident (JSON object)
 
   - name: PollEntry
-    stepName: PollEntry
+    stepName: poll entry
     description: Polls Remedy entry until it gets to the desired status
     endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
     method: GET
@@ -324,6 +327,74 @@ procedures:
         required: 1
         label: Status Field
         documentation: Field that contains the entry status
+      - property: expected_status
+        type: entry
+        required: 1
+        label: Desired Status
+      - property: poll_interval
+        type: entry
+        label: Polling Interval
+        documentation: Polling interval in seconds
+        required: 1
+        default: 300
+      - property: polling_timeout
+        label: Polling Timeout
+        documentation: Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.
+        required: 0
+        type: entry
+
+  - name: PollIncident
+    stepName: poll incident
+    description: Polls Remedy Incident until it gets to the desired status
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      status: Entry status
+      incident: 'JSON representation of the incident'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be queried
+        required: 1
+      - property: expected_status
+        type: entry
+        required: 1
+        label: Desired Status
+      - property: poll_interval
+        type: entry
+        label: Polling Interval
+        documentation: Polling interval in seconds
+        required: 1
+        default: 300
+      - property: polling_timeout
+        label: Polling Timeout
+        documentation: Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.
+        required: 0
+        type: entry
+
+  - name: PollChangeRequest
+    stepName: poll change request
+    description: Polls Remedy Change Request until it gets to the desired status
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      status: Entry status
+      changeRequest: 'JSON representation of the incident'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be queried
+        required: 1
       - property: expected_status
         type: entry
         required: 1
@@ -506,3 +577,27 @@ procedures:
         required: 0
         in: body
         documentation: Fields for change request (JSON object)
+
+
+  - name: GetEntry
+    stepName: get entry
+    description: Fetches Remedy entry with the specified form name and entry ID
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      entry: 'JSON representation of the incident'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be queried
+        required: 1
+      - property: form_name
+        type: entry
+        label: Form Name
+        documentation: Entry form name, e.g. CHG:ChangeInterface_Create
+        required: 1

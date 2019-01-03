@@ -1,4 +1,4 @@
-<!-- HELP GEN VERSION 
+<!-- HELP GEN VERSION
             <table class="grid">
                 <thead>
                     <tr>
@@ -30,7 +30,7 @@
                  </tbody>
             </table>
          -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML
             <table class="grid">
                 <thead>
                     <tr>
@@ -295,9 +295,12 @@
 <li><a href="#CreateIncident">CreateIncident</a></li>
 <li><a href="#UpdateIncident">UpdateIncident</a></li>
 <li><a href="#PollEntry">PollEntry</a></li>
+<li><a href="#PollIncident">PollIncident</a></li>
+<li><a href="#PollChangeRequest">PollChangeRequest</a></li>
 <li><a href="#GetChangeRequest">GetChangeRequest</a></li>
 <li><a href="#CreateChangeRequest">Create Change Request</a></li>
-<li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li><!-- TOC END -->
+<li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li>
+<li><a href="#GetEntry">GetEntry</a></li><!-- TOC END -->
         </ul>
         <h2>Configuration</h2>
         <div id="CreateConfiguration">
@@ -552,6 +555,120 @@
             </table>
         <!-- CreateEntry END -->
             </div>
+            <div id="UpdateEntry">
+                <a name="UpdateEntry" id="UpdateEntry" />
+                <!-- UpdateEntry METADATA BEGIN -->
+            <h3>UpdateEntry</h3>
+            <p>Updates Remedy entry.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p><!-- UpdateEntry METADATA END -->
+                <!-- UpdateEntry BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Remedy form name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Remedy entry ID.</td>
+                </tr>
+                <tr>
+                    <td class="required">Fields</td>
+                    <td>Fields for entry (JSON object)</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- UpdateEntry END -->
+            </div>
+            <div id="PollChangeRequest">
+                <a name="PollChangeRequest" id="PollChangeRequest" />
+                <!-- PollChangeRequest METADATA BEGIN -->
+            <h3>PollChangeRequest</h3>
+            <p>Polls Remedy Change Request until it gets to the desired status</p>
+        <!-- PollChangeRequest METADATA END -->
+                <!-- PollChangeRequest BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be queried</td>
+                </tr>
+                <tr>
+                    <td class="required">Desired Status</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="required">Polling Interval</td>
+                    <td>Polling interval in seconds</td>
+                </tr>
+                <tr>
+                    <td>Polling Timeout</td>
+                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- PollChangeRequest END -->
+            </div>
+            <div id="GetEntry">
+                <a name="GetEntry" id="GetEntry" />
+                <!-- GetEntry METADATA BEGIN -->
+            <h3>GetEntry</h3>
+            <p>Fetches Remedy entry with the specified form name and entry ID</p>
+        <!-- GetEntry METADATA END -->
+                <!-- GetEntry BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be queried</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Entry form name, e.g. CHG:ChangeInterface_Create</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetEntry END -->
+        <!-- PollEntry END -->
+            </div>
             <div id="QueryEntries">
                 <a name="QueryEntries" id="QueryEntries" />
                 <!-- QueryEntries METADATA BEGIN -->
@@ -598,49 +715,6 @@
                  </tbody>
             </table>
         <!-- QueryEntries END -->
-            </div>
-            <div id="UpdateEntry">
-                <a name="UpdateEntry" id="UpdateEntry" />
-                <!-- UpdateEntry METADATA BEGIN -->
-            <h3>UpdateEntry</h3>
-            <p>Updates Remedy entry.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p><!-- UpdateEntry METADATA END -->
-                <!-- UpdateEntry BEGIN -->
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Configuration Name</td>
-                    <td>Previously defined plugin configuration.</td>
-                </tr>
-                <tr>
-                    <td class="required">Form Name</td>
-                    <td>Remedy form name.</td>
-                </tr>
-                <tr>
-                    <td class="required">Entry ID</td>
-                    <td>Remedy entry ID.</td>
-                </tr>
-                <tr>
-                    <td class="required">Fields</td>
-                    <td>Fields for entry (JSON object)</td>
-                </tr>
-                <tr>
-                    <td class="required">Property sheet name for results</td>
-                    <td>Results will be saved into this property/property sheet.</td>
-                </tr>
-                <tr>
-                    <td class="required">Result format</td>
-                    <td>Format to save request results.</td>
-                </tr>
-                 </tbody>
-            </table>
-        <!-- UpdateEntry END -->
             </div>
             <div id="GetIncident">
                 <a name="GetIncident" id="GetIncident" />
@@ -831,6 +905,92 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be updated</td>
+                </tr>
+                <tr>
+                    <td class="required">Form Name</td>
+                    <td>Form name, e.g. HPD:IncidentInterface_Create</td>
+                </tr>
+                <tr>
+                    <td class="required">Status Field</td>
+                    <td>Field that contains the entry status</td>
+                </tr>
+                <tr>
+                    <td class="required">Desired Status</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="required">Polling Interval</td>
+                    <td>Polling interval in seconds</td>
+                </tr>
+                <tr>
+                    <td>Polling Timeout</td>
+                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- PollEntry END -->
+            </div>
+            <div id="PollIncident">
+                <a name="PollIncident" id="PollIncident" />
+                <!-- PollIncident METADATA BEGIN -->
+            <h3>PollIncident</h3>
+            <p>Polls Remedy Incident until it gets to the desired status</p>
+        <!-- PollIncident METADATA END -->
+                <!-- PollIncident BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be queried</td>
+                </tr>
+                <tr>
+                    <td class="required">Desired Status</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="required">Polling Interval</td>
+                    <td>Polling interval in seconds</td>
+                </tr>
+                <tr>
+                    <td>Polling Timeout</td>
+                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- PollIncident END -->
+            </div>
+            <div id="GetChangeRequest">
+                <a name="GetChangeRequest" id="GetChangeRequest" />
+                <!-- GetChangeRequest METADATA BEGIN -->
+            <h3>GetChangeRequest</h3>
+            <p>Get Remedy change request details.</p>
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">GetChangeRequest</a> for reference.</p><!-- GetChangeRequest METADATA END -->
+                <!-- GetChangeRequest BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
                     <td class="required">Change Request ID</td>
                     <td>Entry ID of an incident.</td>
                 </tr>
@@ -848,7 +1008,7 @@
                 </tr>
                  </tbody>
             </table>
-        <!-- PollEntry END -->
+        <!-- GetChangeRequest END -->
             </div>
 <!-- PROCEDURES END -->
     </div>
