@@ -62,14 +62,7 @@
 <!-- LINKS END -->
         <h1>Contents</h1>
         <ul>
-        <!-- TOC BEGIN --><li><a href="#CreateEntry">CreateEntry</a></li>
-<li><a href="#QueryEntries">QueryEntries</a></li>
-<li><a href="#UpdateEntry">UpdateEntry</a></li>
-<li><a href="#GetIncidentStatus">GetIncidentStatus</a></li>
-<li><a href="#CreateIncident">CreateIncident</a></li>
-<li><a href="#UpdateIncident">UpdateIncident</a></li>
-<li><a href="#CreateChangeRequest">Create Change Request</a></li>
-<li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li><!-- TOC END -->
+
         </ul>
         <h2>Configuration</h2>
         <div id="CreateConfiguration">
@@ -125,7 +118,7 @@
                     Remedy Endpoint:
                 </td>
                 <td>
-                    BMC Remedy URL.
+                    BMC Remedy URL, e.g. http://myserver:8008.
                 </td>
             </tr>
             <tr>
@@ -202,13 +195,32 @@
             </table>
         <!-- QueryEntries END -->
             </div>
-            <div id="CreateChangeRequest">
-                <a name="CreateChangeRequest" id="CreateChangeRequest" />
-                <!-- CreateChangeRequest METADATA BEGIN -->
-            <h3>Create Change Request</h3>
-            <p>Creates Remedy Change Request.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html</a><br /><a href="https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html" target="_blank">https://docs.bmc.com/docs/ars9000/api-use-cases-518478417.html</a><br/> for reference.</p><!-- CreateChangeRequest METADATA END -->
-                <!-- CreateChangeRequest BEGIN -->
+
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+
             <table class="grid">
                 <thead>
                     <tr>
@@ -222,36 +234,7 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Description</td>
-                    <td>An change request description.</td>
-                </tr>
-                <tr>
-                    <td class="required">Status</td>
-                    <td>An change request status.</td>
-                </tr>
-                <tr>
-                    <td class="required">Urgency</td>
-                    <td>An change request urgency.</td>
-                </tr>
-                <tr>
-                    <td class="required">Impact</td>
-                    <td>An change request impact.</td>
-                </tr>
-                <tr>
-                    <td class="required">First Name</td>
-                    <td>An change request First Name.</td>
-                </tr>
-                <tr>
-                    <td class="required">Last Name</td>
-                    <td>An change request Last Name.</td>
-                </tr>
-                <tr>
-                    <td class="required">Service Type</td>
-                    <td>An change request service type.</td>
-                </tr>
-                <tr>
-                    <td class="required">Fields</td>
-                    <td>Fields for change request (JSON object)</td>
+
                 </tr>
                 <tr>
                     <td class="required">Property sheet name for results</td>
@@ -263,46 +246,7 @@
                 </tr>
                  </tbody>
             </table>
-        <!-- CreateChangeRequest END -->
-            </div>
-            <div id="CreateEntry">
-                <a name="CreateEntry" id="CreateEntry" />
-                <!-- CreateEntry METADATA BEGIN -->
-            <h3>CreateEntry</h3>
-            <p>Creates Remedy entry.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateEntry</a> for reference.</p><!-- CreateEntry METADATA END -->
-                <!-- CreateEntry BEGIN -->
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Configuration Name</td>
-                    <td>Previously defined plugin configuration.</td>
-                </tr>
-                <tr>
-                    <td class="required">Form Name</td>
-                    <td>Remedy form name.</td>
-                </tr>
-                <tr>
-                    <td class="required">Fields</td>
-                    <td>Fields for entry (JSON object)</td>
-                </tr>
-                <tr>
-                    <td class="required">Property sheet name for results</td>
-                    <td>Results will be saved into this property/property sheet.</td>
-                </tr>
-                <tr>
-                    <td class="required">Result format</td>
-                    <td>Format to save request results.</td>
-                </tr>
-                 </tbody>
-            </table>
-        <!-- CreateEntry END -->
+
             </div>
 <!-- PROCEDURES END -->
     </div>

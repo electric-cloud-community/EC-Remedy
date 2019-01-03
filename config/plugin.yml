@@ -259,6 +259,51 @@ procedures:
         in: body
         documentation: Fields for incident (JSON object)
 
+  - name: PollEntry
+    stepName: PollEntry
+    description: Polls Remedy entry until it gets to the desired status
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      status: Entry status
+      entry: 'JSON representation of the entry'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be updated
+        required: 1
+      - property: form_name
+        type: entry
+        label: Form Name
+        documentation: Form name, e.g. HPD:IncidentInterface_Create
+        required: 1
+      - property: status_field
+        type: entry
+        default: Status
+        required: 1
+        label: Status Field
+        documentation: Field that contains the entry status
+      - property: expected_status
+        type: entry
+        required: 1
+        label: Desired Status
+      - property: poll_interval
+        type: entry
+        label: Polling Interval
+        documentation: Polling interval in seconds
+        required: 1
+        default: 300
+      - property: polling_timeout
+        label: Polling Timeout
+        documentation: Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.
+        required: 0
+        type: entry
+
   - name: Create Change Request
     stepName: create change request
     description: Creates Remedy Change Request.

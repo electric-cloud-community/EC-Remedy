@@ -19,6 +19,7 @@ def stepsWithAttachedCredentials = [
   [procedureName: 'CreateEntry', stepName: 'create entry'],
   [procedureName: 'CreateIncident', stepName: 'create incident'],
   [procedureName: 'GetIncidentStatus', stepName: 'get incident status'],
+  [procedureName: 'PollEntry', stepName: 'PollEntry'],
   [procedureName: 'QueryEntries', stepName: 'query entries'],
   [procedureName: 'UpdateChangeRequest', stepName: 'update change request'],
   [procedureName: 'UpdateEntry', stepName: 'update entry'],
@@ -27,6 +28,8 @@ def stepsWithAttachedCredentials = [
 // ** end steps with attached credentials
 
 project pluginName, {
+
+    property 'ec_formXmlCompliant', value: 'true'
 
 	loadPluginProperties(pluginDir, pluginName)
 	loadProcedures(pluginDir, pluginKey, pluginName, stepsWithAttachedCredentials)
@@ -39,6 +42,7 @@ project pluginName, {
 				property 'order', value: '1'
 			}
 		}
+        configLocation = 'ec_plugin_cfgs'
 	}
 
 }

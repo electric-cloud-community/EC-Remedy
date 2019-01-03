@@ -46,7 +46,7 @@ sub get_token {
     # Cannot use default methods because of recursion
     my LWP::UserAgent $lwp = LWP::UserAgent->new();
     my $token_request_uri = $config->{endpoint} . '/api/jwt/login';
-    print "Token URI : $token_request_uri \n";
+    $self->logger->debug("Token URI : $token_request_uri");
 
     my HTTP::Request $request = HTTP::Request->new('POST', $token_request_uri);
     $request->headers->header('Content-Type', 'application/x-www-form-urlencoded');
@@ -76,7 +76,6 @@ sub get_token {
     }
 
     print "Token request failed with status:" . $response->status_line() . "\n";
-    print Dumper $response;
 
     return 0;
 }

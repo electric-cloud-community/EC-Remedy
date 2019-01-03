@@ -3,6 +3,7 @@ package EC::Plugin::Hooks;
 use strict;
 use warnings;
 use MIME::Base64 qw(encode_base64);
+use JSON;
 
 use base qw(EC::Plugin::HooksCore);
 
@@ -89,7 +90,42 @@ sub define_hooks {
     $self->define_hook('*', 'response', \&parse_json_error);
 
     $self->define_hook('create incident', 'response', \&create_incident_response);
+    $self->define_hook('PollEntry', 'after', \&poll_entry);
 }
+
+
+sub poll_entry {
+    my ($self, $data) = @_;
+
+    my $params = $self->plugin->parameters;
+    my $status_field = $params->{status_field};
+    my $interval = $params->{poll_interval};
+    my $timeout = $params->{polling_timeout};
+    my $expected_status = $params->{expected_status};
+
+    my $status = $data->{values}->{$status_field};
+    my $elapsed = $self->{polling_elapsed} ||= 0;
+
+    $self->plugin->ec->setOutputParameter('status', $status);
+    $self->plugin->ec->setOutputParameter('entry', encode_json($data->{values}));
+    $self->plugin->ec->setOutputParameter('entryId', $params->{entry_id});
+
+    if ($status ne $expected_status) {
+
+        if ($timeout && $elapsed > $timeout) {
+            # This will end the step execution
+            $self->plugin->bail_out("Polling timeout, the last status is $status");
+        }
+        # This is a sort of recursion
+        $self->plugin->logger->info("Status is $status, polling (elapsed time is $elapsed seconds)...");
+
+        sleep($interval);
+        $elapsed += $interval;
+        $self->{polling_elapsed} = $elapsed;
+        $self->plugin->run_one_step($self->plugin->current_step_name);
+    }
+}
+
 
 sub expand_generic_parameters {
     my ($self, $request) = @_;
