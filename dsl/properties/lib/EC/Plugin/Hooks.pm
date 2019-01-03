@@ -89,6 +89,7 @@ sub define_hooks {
     $self->define_hook('*', 'response', \&parse_json_error);
     $self->define_hook('poll entry', 'after', \&poll_entry);
     $self->define_hook('poll incident', 'after', \&poll_incident);
+    $self->define_hook('poll change request', 'after', \&poll_change_request);
     $self->define_hook('create incident', 'response', \&create_incident_response);
 }
 
@@ -106,7 +107,7 @@ sub poll_entry {
     my $elapsed = $self->{polling_elapsed} ||= 0;
 
     $self->plugin->ec->setOutputParameter('status', $status);
-    $self->plugin->ec->setOutputParameter('entry', encode_json($data->{values}));
+    $self->plugin->ec->setOutputParameter('entry', JSON->new->pretty->encode($data->{values}));
     $self->plugin->ec->setOutputParameter('entryId', $params->{entry_id});
 
     if ($status ne $expected_status) {
@@ -143,7 +144,45 @@ sub poll_incident {
     my $elapsed = $self->{polling_elapsed} ||= 0;
 
     $self->plugin->ec->setOutputParameter('status', $status);
-    $self->plugin->ec->setOutputParameter('incident', encode_json($data->{values}));
+    $self->plugin->ec->setOutputParameter('incident', JSON->new->pretty->encode($data->{values}));
+    $self->plugin->ec->setOutputParameter('entryId', $params->{entry_id});
+
+    if ($status ne $expected_status) {
+
+        if ($timeout && $elapsed > $timeout) {
+            # This will end the step execution
+            $self->plugin->bail_out("Polling timeout, the last status is $status");
+        }
+        # This is a sort of recursion
+        $self->plugin->logger->info("Status is $status, polling (elapsed time is $elapsed seconds)...");
+
+        sleep($interval);
+        $elapsed += $interval;
+        $self->{polling_elapsed} = $elapsed;
+        $self->plugin->run_one_step($self->plugin->current_step_name);
+    }
+    else {
+        $self->plugin->set_summary("Status is $status");
+    }
+
+}
+
+
+# TODO squash into one method
+sub poll_change_request {
+    my ($self, $data) = @_;
+
+    my $params = $self->plugin->parameters;
+    my $status_field = 'Status';
+    my $interval = $params->{poll_interval};
+    my $timeout = $params->{polling_timeout};
+    my $expected_status = $params->{expected_status};
+
+    my $status = $data->{values}->{$status_field};
+    my $elapsed = $self->{polling_elapsed} ||= 0;
+
+    $self->plugin->ec->setOutputParameter('status', $status);
+    $self->plugin->ec->setOutputParameter('changeRequest', JSON->new->pretty->encode($data->{values}));
     $self->plugin->ec->setOutputParameter('entryId', $params->{entry_id});
 
     if ($status ne $expected_status) {

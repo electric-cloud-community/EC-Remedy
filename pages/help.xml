@@ -72,6 +72,7 @@
 <li><a href="#UpdateIncident">UpdateIncident</a></li>
 <li><a href="#PollEntry">PollEntry</a></li>
 <li><a href="#PollIncident">PollIncident</a></li>
+<li><a href="#PollChangeRequest">PollChangeRequest</a></li>
 <li><a href="#CreateChangeRequest">Create Change Request</a></li>
 <li><a href="#UpdateChangeRequest">UpdateChangeRequest</a></li><!-- TOC END -->
 >>>>>>> 27d2a628c081b915bec425a40d64600d8d58f1d1
@@ -424,7 +425,7 @@
                 </tr>
                 <tr>
                     <td class="required">Entry ID</td>
-                    <td>Entry ID of the entry to be updated</td>
+                    <td>Entry ID of the entry to be queried</td>
                 </tr>
                 <tr>
                     <td class="required">Desired Status</td>
@@ -549,8 +550,7 @@
                 <!-- CreateEntry METADATA BEGIN -->
             <h3>CreateEntry</h3>
             <p>Creates Remedy entry.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateEntry</a> for reference.</p>
-                <!-- CreateEntry METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">CreateEntry</a> for reference.</p><!-- CreateEntry METADATA END -->
                 <!-- CreateEntry BEGIN -->
             <table class="grid">
                 <thead>
@@ -582,15 +582,14 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- CreateEntry END -->
+        <!-- CreateEntry END -->
             </div>
             <div id="UpdateEntry">
                 <a name="UpdateEntry" id="UpdateEntry" />
                 <!-- UpdateEntry METADATA BEGIN -->
             <h3>UpdateEntry</h3>
             <p>Updates Remedy entry.</p>
-        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p>
-                <!-- UpdateEntry METADATA END -->
+        <p>This procedure is a wrapper around REST API. See <a href="https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html" target="_blank">UpdateEntry</a> for reference.</p><!-- UpdateEntry METADATA END -->
                 <!-- UpdateEntry BEGIN -->
             <table class="grid">
                 <thead>
@@ -626,7 +625,46 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- UpdateEntry END -->
+        <!-- UpdateEntry END -->
+            </div>
+            <div id="PollChangeRequest">
+                <a name="PollChangeRequest" id="PollChangeRequest" />
+                <!-- PollChangeRequest METADATA BEGIN -->
+            <h3>PollChangeRequest</h3>
+            <p>Polls Remedy Change Request until it gets to the desired status</p>
+                <!-- PollChangeRequest METADATA END -->
+                <!-- PollChangeRequest BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of the entry to be queried</td>
+                </tr>
+                <tr>
+                    <td class="required">Desired Status</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="required">Polling Interval</td>
+                    <td>Polling interval in seconds</td>
+                </tr>
+                <tr>
+                    <td>Polling Timeout</td>
+                    <td>Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- PollChangeRequest END -->
             </div>
 <!-- PROCEDURES END -->
     </div>

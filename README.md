@@ -37,6 +37,10 @@ Polls Remedy entry until it gets to the desired status
 
 Polls Remedy Incident until it gets to the desired status
 
+## PollChangeRequest
+
+Polls Remedy Change Request until it gets to the desired status
+
 ## Create Change Request
 
 Creates Remedy Change Request.

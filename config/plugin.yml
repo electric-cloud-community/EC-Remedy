@@ -321,7 +321,42 @@ procedures:
       - property: entry_id
         type: entry
         label: Entry ID
-        documentation: Entry ID of the entry to be updated
+        documentation: Entry ID of the entry to be queried
+        required: 1
+      - property: expected_status
+        type: entry
+        required: 1
+        label: Desired Status
+      - property: poll_interval
+        type: entry
+        label: Polling Interval
+        documentation: Polling interval in seconds
+        required: 1
+        default: 300
+      - property: polling_timeout
+        label: Polling Timeout
+        documentation: Polling timeout. If no timeout is provided, the polling will continue until the condition is reached.
+        required: 0
+        type: entry
+
+
+  - name: PollChangeRequest
+    stepName: poll change request
+    description: Polls Remedy Change Request until it gets to the desired status
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{entry_id}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    contentType: application/json
+    outputParameters:
+      entryId: Entry ID
+      status: Entry status
+      changeRequest: 'JSON representation of the incident'
+    parameters:
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be queried
         required: 1
       - property: expected_status
         type: entry
