@@ -83,7 +83,7 @@
          "impact",
          "first_name",
          "last_name",
-         "service_type",
+         "location_company",
          "values"
       ],
       "hasConfig" : "true",
@@ -139,10 +139,10 @@
             "type" : "entry"
          },
          {
-            "documentation" : "An change request service type.",
+            "documentation" : "An change request location company.",
             "in" : "body",
-            "label" : "Service Type",
-            "property" : "service_type",
+            "label" : "Location Company",
+            "property" : "location_company",
             "required" : "1",
             "type" : "entry"
          },
@@ -151,7 +151,7 @@
             "in" : "body",
             "label" : "Fields",
             "property" : "values",
-            "required" : "1",
+            "required" : "0",
             "type" : "textarea"
          }
       ],

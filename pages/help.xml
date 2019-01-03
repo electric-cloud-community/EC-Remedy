@@ -426,11 +426,11 @@
                     <td>An change request Last Name.</td>
                 </tr>
                 <tr>
-                    <td class="required">Service Type</td>
-                    <td>An change request service type.</td>
+                    <td class="required">Location Company</td>
+                    <td>An change request location company.</td>
                 </tr>
                 <tr>
-                    <td class="required">Fields</td>
+                    <td>Fields</td>
                     <td>Fields for change request (JSON object)</td>
                 </tr>
                 <tr>

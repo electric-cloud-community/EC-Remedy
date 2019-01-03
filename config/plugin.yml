@@ -395,16 +395,16 @@ procedures:
         required: 1
         in: body
         documentation: An change request Last Name.
-      - property: service_type
+      - property: location_company
         type: entry
-        label: Service Type
+        label: Location Company
         required: 1
         in: body
-        documentation: An change request service type.
+        documentation: An change request location company.
       - property: values
         type: textarea
         label: Fields
-        required: 1
+        required: 0
         in: body
         documentation: Fields for change request (JSON object)
 

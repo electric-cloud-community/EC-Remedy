@@ -59,9 +59,9 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>An change request service type.</documentation>
-  <label>Service Type:</label>
-  <property>service_type</property>
+  <documentation>An change request location company.</documentation>
+  <label>Location Company:</label>
+  <property>location_company</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
@@ -70,7 +70,7 @@
   <documentation>Fields for change request (JSON object).</documentation>
   <label>Fields:</label>
   <property>values</property>
-  <required>1</required>
+  <required>0</required>
   <type>textarea</type>
   <value></value>
 </formElement>
