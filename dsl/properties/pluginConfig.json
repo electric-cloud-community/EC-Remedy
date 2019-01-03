@@ -15,6 +15,62 @@
          {
             "required" : "1",
             "in" : "body",
+            "documentation" : "An change request description.",
+            "label" : "Description",
+            "type" : "textarea",
+            "property" : "description"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An change request status.",
+            "label" : "Status",
+            "type" : "entry",
+            "property" : "cr_status"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An change request urgency.",
+            "label" : "Urgency",
+            "type" : "entry",
+            "property" : "urgency"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An change request impact.",
+            "label" : "Impact",
+            "type" : "entry",
+            "property" : "impact"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An change request First Name.",
+            "label" : "First Name",
+            "type" : "entry",
+            "property" : "first_name"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An change request Last Name.",
+            "label" : "Last Name",
+            "type" : "entry",
+            "property" : "last_name"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "An change request service type.",
+            "label" : "Service Type",
+            "type" : "entry",
+            "property" : "service_type"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
             "documentation" : "Fields for change request (JSON object)",
             "label" : "Fields",
             "type" : "textarea",
@@ -22,6 +78,13 @@
          }
       ],
       "fields" : [
+         "description",
+         "cr_status",
+         "urgency",
+         "impact",
+         "first_name",
+         "last_name",
+         "service_type",
          "values"
       ],
       "hasConfig" : "true",
@@ -49,7 +112,7 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Search qualification. e.g. 'Submitter' = \"Allen\"",
+            "documentation" : "Entry ID of an incident.",
             "label" : "Incident ID",
             "type" : "entry",
             "property" : "incident_id"
@@ -61,27 +124,18 @@
             "label" : "Fields",
             "type" : "entry",
             "property" : "fields"
-         },
-         {
-            "required" : "0",
-            "in" : "query",
-            "documentation" : "Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog",
-            "label" : "Expand",
-            "type" : "entry",
-            "property" : "expand"
          }
       ],
       "fields" : [
          "incident_id",
-         "fields",
-         "expand"
+         "fields"
       ],
       "hasConfig" : "true",
       "method" : "GET",
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{incident_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{incident_id}",
       "attachCredentials" : "true"
    },
    "query entries" : {

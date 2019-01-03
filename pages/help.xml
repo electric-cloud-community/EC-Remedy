@@ -176,15 +176,19 @@
                 </tr>
                 <tr>
                     <td class="required">Form Name</td>
-                    <td>Remedy form name.</td>
+                    <td>Name of the form to receive entries for.</td>
                 </tr>
                 <tr>
-                    <td class="required">Entry ID</td>
-                    <td>Remedy entry ID.</td>
+                    <td>Query</td>
+                    <td>Search qualification. e.g. 'Submitter' = "Allen"</td>
                 </tr>
                 <tr>
-                    <td class="required">Fields</td>
-                    <td>Fields for entry (JSON object)</td>
+                    <td>Fields</td>
+                    <td>Selects what parts of the JSON document to return e.g. fieldName1, fieldName2</td>
+                </tr>
+                <tr>
+                    <td>Expand</td>
+                    <td>Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog</td>
                 </tr>
                 <tr>
                     <td class="required">Property sheet name for results</td>
@@ -216,6 +220,34 @@
                 <tr>
                     <td class="required">Configuration Name</td>
                     <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>An change request description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Status</td>
+                    <td>An change request status.</td>
+                </tr>
+                <tr>
+                    <td class="required">Urgency</td>
+                    <td>An change request urgency.</td>
+                </tr>
+                <tr>
+                    <td class="required">Impact</td>
+                    <td>An change request impact.</td>
+                </tr>
+                <tr>
+                    <td class="required">First Name</td>
+                    <td>An change request First Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Last Name</td>
+                    <td>An change request Last Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Service Type</td>
+                    <td>An change request service type.</td>
                 </tr>
                 <tr>
                     <td class="required">Fields</td>

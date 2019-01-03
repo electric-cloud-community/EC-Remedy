@@ -134,7 +134,7 @@ procedures:
     description: Get Remedy incident details.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface/#{incident_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{incident_id}'
     method: GET
     hasConfig: true
     attachCredentials: true
@@ -148,7 +148,7 @@ procedures:
       - property: incident_id
         type: entry
         label: Incident ID
-        documentation: Search qualification. e.g. 'Submitter' = "Allen"
+        documentation: Entry ID of an incident.
         required: 1
       - property: fields
         type: entry
@@ -156,12 +156,6 @@ procedures:
         required: 0
         in: query
         documentation: Selects what parts of the JSON document to return e.g. fieldName1, fieldName2
-      - property: expand
-        type: entry
-        label: Expand
-        required: 0
-        in: query
-        documentation: Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog
 
   - name: CreateIncident
     stepName: create incident
@@ -284,6 +278,48 @@ procedures:
         - propertySheet
       default: /myJob/entriesList
     parameters:
+      - property: description
+        type: textarea
+        label: Description
+        required: 1
+        in: body
+        documentation: An change request description.
+      - property: cr_status
+        type: entry
+        label: Status
+        required: 1
+        in: body
+        documentation: An change request status.
+      - property: urgency
+        type: entry
+        label: Urgency
+        required: 1
+        in: body
+        documentation: An change request urgency.
+      - property: impact
+        type: entry
+        label: Impact
+        required: 1
+        in: body
+        documentation: An change request impact.
+      - property: first_name
+        type: entry
+        label: First Name
+        required: 1
+        in: body
+        documentation: An change request First Name.
+      - property: last_name
+        type: entry
+        label: Last Name
+        required: 1
+        in: body
+        documentation: An change request Last Name.
+      - property: service_type
+        type: entry
+        label: Service Type
+        required: 1
+        in: body
+        documentation: An change request service type.
       - property: values
         type: textarea
         label: Fields

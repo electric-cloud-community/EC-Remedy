@@ -1,4 +1,4 @@
-procedure 'GetIncidentStatus', description: 'Retrieves a list of Remedy entries', { // [PROCEDURE]
+procedure 'GetIncidentStatus', description: 'Get Remedy incident details', { // [PROCEDURE]
     // [REST Plugin Wizard step]
 
     step 'get incident status',

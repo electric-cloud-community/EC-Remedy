@@ -102,6 +102,9 @@ sub create_incident_body {
     my $data = { values => {} };
     if($body->{values}) {
         $data->{values} = decode_json($body->{values});
+        if(!$data->{values}->{'z1D_Action'}) {
+            $data->{values}->{'z1D_Action'} = 'CREATE';
+        }
     }
 
     $data->{values}->{'Description'}     = $body->{description};

@@ -11,7 +11,7 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Search qualification. e.g. 'Submitter' = &quot;Allen&quot;.</documentation>
+  <documentation>Entry ID of an incident.</documentation>
   <label>Incident ID:</label>
   <property>incident_id</property>
   <required>1</required>
@@ -22,14 +22,6 @@
   <documentation>Selects what parts of the JSON document to return e.g. fieldName1, fieldName2.</documentation>
   <label>Fields:</label>
   <property>fields</property>
-  <required>0</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
-  <documentation>Expands the related entry (associations). You can use assoc() with a comma-separated list of association names inside the parenthesis to embed copies of the related entries following those associations. e.g. WorkLog.</documentation>
-  <label>Expand:</label>
-  <property>expand</property>
   <required>0</required>
   <type>entry</type>
   <value></value>
