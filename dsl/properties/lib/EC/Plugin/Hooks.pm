@@ -190,6 +190,13 @@ sub get_entry_parsed {
     $self->plugin->ec->setOutputParameter('entryId', $entry_id);
     $self->plugin->logger->info("Got Entry: ", $values);
     $self->plugin->set_summary("Retrieved entry $form :: $entry_id");
+
+    my $status_field = $self->plugin->parameters->{status_field} || 'Status';
+    if ($status_field) {
+        my $status = $values->{$status_field} || '';
+        $self->plugin->ec->setOutputParameter('entryStatus', $status);
+        $self->plugin->logger->info("Status is $status");
+    }
 }
 
 sub poll_entry {

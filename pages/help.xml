@@ -760,6 +760,10 @@
                     <td>Entry Number</td>
                     <td>Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.</td>
                 </tr>
+                <tr>
+                    <td>Status Field</td>
+                    <td>Field name of the status field, will be used to fill "status" output parameter.</td>
+                </tr>
                  </tbody>
             </table>
         <!-- GetEntry END -->

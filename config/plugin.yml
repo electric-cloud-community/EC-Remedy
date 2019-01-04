@@ -616,6 +616,7 @@ procedures:
     outputParameters:
       entryId: Entry ID
       entry: 'JSON representation of the incident'
+      entryStatus: Status of the entry
     parameters:
       - property: form_name
         type: entry
@@ -637,3 +638,8 @@ procedures:
         required: 0
         label: Entry Number
         documentation: Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.
+      - property: status_field
+        type: entry
+        required: 0
+        label: Status Field
+        documentation: Field name of the status field, will be used to fill "status" output parameter.
