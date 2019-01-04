@@ -15,6 +15,8 @@ EC::Remedy::Plugin->new->run_step('update change request');
     
     // [REST Plugin Wizard step ends]
     // [Output Parameters Begin]
+formalOutputParameter 'changeRequest', description: 'JSON representation of the change request'
+formalOutputParameter 'entryId', description: 'Entry ID of the change request'
 
     // [Output Parameters End]
 }

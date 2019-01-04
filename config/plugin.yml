@@ -446,7 +446,7 @@ procedures:
     description: Get Remedy change request details.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{entry_id}'
     method: GET
     hasConfig: true
     attachCredentials: true
@@ -456,11 +456,14 @@ procedures:
         - json
         - propertySheet
       default: /myJob/entriesList
+    outputParameters:
+      changeRequest: "JSON representation of the change request"
+      entryId: 'Entry ID of the change request'
     parameters:
-      - property: cr_id
+      - property: entry_id
         type: entry
-        label: Change Request ID
-        documentation: Entry ID of an incident.
+        label: Entry ID
+        documentation: Entry ID of a change request.
         required: 1
       - property: fields
         type: entry
@@ -545,7 +548,7 @@ procedures:
     description: Updates Remedy change request.
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{request_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{entry_id}'
     method: PUT
     hasConfig: true
     attachCredentials: true
@@ -556,12 +559,15 @@ procedures:
         - json
         - propertySheet
       default: /myJob/entriesList
+    outputParameters:
+      changeRequest: "JSON representation of the change request"
+      entryId: 'Entry ID of the change request'
     parameters:
-      - property: request_id
+      - property: entry_id
         type: entry
-        label: Request ID
+        label: Entry ID
         required: 1
-        documentation: Request ID
+        documentation: Entry ID of a change request.
       - property: description
         type: textarea
         label: Description

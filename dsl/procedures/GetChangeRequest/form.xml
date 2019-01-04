@@ -11,9 +11,9 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Entry ID of an incident.</documentation>
-  <label>Change Request ID:</label>
-  <property>cr_id</property>
+  <documentation>Entry ID of a change request.</documentation>
+  <label>Entry ID:</label>
+  <property>entry_id</property>
   <required>1</required>
   <type>entry</type>
   <value></value>

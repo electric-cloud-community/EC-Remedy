@@ -255,19 +255,23 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{cr_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{entry_id}",
       "fields" : [
-         "cr_id",
+         "entry_id",
          "fields"
       ],
       "hasConfig" : "true",
       "method" : "GET",
       "name" : "GetChangeRequest",
+      "outputParameters" : {
+         "changeRequest" : "JSON representation of the change request",
+         "entryId" : "Entry ID of the change request"
+      },
       "parameters" : [
          {
-            "documentation" : "Entry ID of an incident.",
-            "label" : "Change Request ID",
-            "property" : "cr_id",
+            "documentation" : "Entry ID of a change request.",
+            "label" : "Entry ID",
+            "property" : "entry_id",
             "required" : "1",
             "type" : "entry"
          },
@@ -633,9 +637,9 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{request_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/CHG:ChangeInterface_Create/#{entry_id}",
       "fields" : [
-         "request_id",
+         "entry_id",
          "description",
          "cr_status",
          "urgency",
@@ -648,11 +652,15 @@
       "hasConfig" : "true",
       "method" : "PUT",
       "name" : "UpdateChangeRequest",
+      "outputParameters" : {
+         "changeRequest" : "JSON representation of the change request",
+         "entryId" : "Entry ID of the change request"
+      },
       "parameters" : [
          {
-            "documentation" : "Request ID",
-            "label" : "Request ID",
-            "property" : "request_id",
+            "documentation" : "Entry ID of a change request.",
+            "label" : "Entry ID",
+            "property" : "entry_id",
             "required" : "1",
             "type" : "entry"
          },
