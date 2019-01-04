@@ -112,16 +112,20 @@
       "hasConfig" : "true",
       "method" : "POST",
       "name" : "CreateEntry",
+      "outputParameters" : {
+         "entry" : "JSON representation of the created entry",
+         "entryId" : "Entry ID of the created entry"
+      },
       "parameters" : [
          {
-            "documentation" : "Remedy form name.",
+            "documentation" : "Remedy form name, e.g. RMS:ReleaseInterface_Create",
             "label" : "Form Name",
             "property" : "form",
             "required" : "1",
             "type" : "entry"
          },
          {
-            "documentation" : "Fields for entry (JSON object)",
+            "documentation" : "Fields for entry (JSON object), e.g.\n\n{\n  \"values\": {\n    \"First Name\": \"Allen\",\n    \"Last Name\": \"Allbrook\",\n    \"Company\": \"Calbro Services\",\n\n    \"Milestone\": \"Initiate\",\n    \"Impact\": \"1-Extensive/Widespread\",\n    \"Urgency\": \"1-Critical\",\n    \"Risk Level\": \"Risk Level 1\",\n    \"Description\": \"Test Created Release\",\n    \"Location Company\": \"Calbro Services\",\n    \"Business Justification\": \"Defect\"\n  }\n}\n",
             "in" : "body",
             "label" : "Fields",
             "property" : "values",
@@ -129,14 +133,6 @@
             "type" : "textarea"
          }
       ],
-      "resultProperty" : {
-         "default" : "/myJob/entriesList",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "show" : "true"
-      },
       "stepName" : "create entry"
    },
    "create incident" : {
@@ -709,20 +705,24 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}/#{entry_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}",
       "fields" : [
-         "form",
+         "form_name",
          "entry_id",
          "values"
       ],
       "hasConfig" : "true",
       "method" : "PUT",
       "name" : "UpdateEntry",
+      "outputParameters" : {
+         "entry" : "JSON representation of the entry",
+         "entryId" : "Entry ID"
+      },
       "parameters" : [
          {
             "documentation" : "Remedy form name.",
             "label" : "Form Name",
-            "property" : "form",
+            "property" : "form_name",
             "required" : "1",
             "type" : "entry"
          },
@@ -734,7 +734,7 @@
             "type" : "entry"
          },
          {
-            "documentation" : "Fields for entry (JSON object)",
+            "documentation" : "Fields for entry (JSON object), e.g.\n{\n  \"First Name\": \"Allen\",\n  \"Last Name\": \"Allbrook\",\n  \"Company\": \"Calbro Services\",\n  \"Milestone\": \"Initiate\",\n  \"Impact\": \"1-Extensive/Widespread\",\n  \"Urgency\": \"1-Critical\",\n  \"Risk Level\": \"Risk Level 1\",\n  \"Description\": \"Test Created Release - Updated\",\n  \"Location Company\": \"Calbro Services\",\n  \"Business Justification\": \"Defect\"\n}\n",
             "in" : "body",
             "label" : "Fields",
             "property" : "values",
@@ -742,14 +742,6 @@
             "type" : "textarea"
          }
       ],
-      "resultProperty" : {
-         "default" : "/myJob/entriesList",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "show" : "true"
-      },
       "stepName" : "update entry"
    },
    "update incident" : {

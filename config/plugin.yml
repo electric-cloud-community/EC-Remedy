@@ -25,24 +25,38 @@ procedures:
     hasConfig: true
     attachCredentials: true
     contentType: application/json
-    resultProperty:
-      show: true
-      format:
-        - json
-        - propertySheet
-      default: /myJob/entriesList
+    outputParameters:
+      entry: JSON representation of the created entry
+      entryId: Entry ID of the created entry
     parameters:
       - property: form
         type: entry
         label: Form Name
         required: 1
-        documentation: Remedy form name.
+        documentation: Remedy form name, e.g. RMS:ReleaseInterface_Create
       - property: values
         type: textarea
         label: Fields
         required: 1
         in: body
-        documentation: Fields for entry (JSON object)
+        documentation: |
+              Fields for entry (JSON object), e.g.
+
+              {
+                "values": {
+                  "First Name": "Allen",
+                  "Last Name": "Allbrook",
+                  "Company": "Calbro Services",
+
+                  "Milestone": "Initiate",
+                  "Impact": "1-Extensive/Widespread",
+                  "Urgency": "1-Critical",
+                  "Risk Level": "Risk Level 1",
+                  "Description": "Test Created Release",
+                  "Location Company": "Calbro Services",
+                  "Business Justification": "Defect"
+                }
+              }
 
   - name: QueryEntries
     stepName: query entries
@@ -100,19 +114,16 @@ procedures:
     # http://localhost:8008/api/arsys/v1/entry/SimpleForm
     documentationLinks:
       - https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html
-    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form}/#{entry_id}'
+    endpoint: '#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}'
     method: PUT
     hasConfig: true
     attachCredentials: true
     contentType: application/json
-    resultProperty:
-      show: true
-      format:
-        - json
-        - propertySheet
-      default: /myJob/entriesList
+    outputParameters:
+      entry: JSON representation of the entry
+      entryId: Entry ID
     parameters:
-      - property: form
+      - property: form_name
         type: entry
         label: Form Name
         required: 1
@@ -127,7 +138,20 @@ procedures:
         label: Fields
         required: 1
         in: body
-        documentation: Fields for entry (JSON object)
+        documentation: |
+          Fields for entry (JSON object), e.g.
+          {
+            "First Name": "Allen",
+            "Last Name": "Allbrook",
+            "Company": "Calbro Services",
+            "Milestone": "Initiate",
+            "Impact": "1-Extensive/Widespread",
+            "Urgency": "1-Critical",
+            "Risk Level": "Risk Level 1",
+            "Description": "Test Created Release - Updated",
+            "Location Company": "Calbro Services",
+            "Business Justification": "Defect"
+          }
 
   - name: GetIncident
     stepName: get incident
@@ -577,7 +601,6 @@ procedures:
         required: 0
         in: body
         documentation: Fields for change request (JSON object)
-
 
   - name: GetEntry
     stepName: get entry

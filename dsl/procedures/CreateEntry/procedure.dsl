@@ -14,5 +14,9 @@ EC::Remedy::Plugin->new->run_step('create entry');
         timeLimitUnits: 'minutes'
     
     // [REST Plugin Wizard step ends]
+    // [Output Parameters Begin]
+formalOutputParameter 'entry', description: 'JSON representation of the created entry'
+formalOutputParameter 'entryId', description: 'Entry ID of the created entry'
 
+    // [Output Parameters End]
 }
