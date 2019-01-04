@@ -21,7 +21,7 @@
 <formElement>
   <documentation>Search qualification. e.g. 'Submitter' = &quot;Allen&quot;.</documentation>
   <label>Query:</label>
-  <property>query</property>
+  <property>q</property>
   <required>0</required>
   <type>textarea</type>
   <value></value>

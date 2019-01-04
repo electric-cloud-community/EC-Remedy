@@ -89,7 +89,7 @@ procedures:
         label: Form Name
         documentation: Name of the form to receive entries for.
         required: 1
-      - property: query
+      - property: q
         type: textarea
         label: Query
         documentation: Search qualification. e.g. 'Submitter' = "Allen"
