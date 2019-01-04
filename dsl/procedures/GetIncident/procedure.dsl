@@ -15,6 +15,8 @@ EC::Remedy::Plugin->new->run_step('get incident');
     
     // [REST Plugin Wizard step ends]
     // [Output Parameters Begin]
+formalOutputParameter 'entryId', description: 'Entry ID'
+formalOutputParameter 'incident', description: 'JSON representation of the incident'
 
     // [Output Parameters End]
 }
