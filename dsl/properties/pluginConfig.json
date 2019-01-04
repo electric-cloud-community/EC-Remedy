@@ -299,14 +299,16 @@
          "form_name",
          "entry_id",
          "entry_number_field",
-         "entry_number"
+         "entry_number",
+         "status_field"
       ],
       "hasConfig" : "true",
       "method" : "GET",
       "name" : "GetEntry",
       "outputParameters" : {
          "entry" : "JSON representation of the incident",
-         "entryId" : "Entry ID"
+         "entryId" : "Entry ID",
+         "entryStatus" : "Status of the entry"
       },
       "parameters" : [
          {
@@ -334,6 +336,13 @@
             "documentation" : "Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.",
             "label" : "Entry Number",
             "property" : "entry_number",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Field name of the status field, will be used to fill \"status\" output parameter.",
+            "label" : "Status Field",
+            "property" : "status_field",
             "required" : "0",
             "type" : "entry"
          }

@@ -42,5 +42,13 @@
   <type>entry</type>
   <value></value>
 </formElement>
+<formElement>
+  <documentation>Field name of the status field, will be used to fill &quot;status&quot; output parameter.</documentation>
+  <label>Status Field:</label>
+  <property>status_field</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
 
 </editor>
