@@ -11,18 +11,34 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Entry ID of the entry to be queried.</documentation>
-  <label>Entry ID:</label>
-  <property>entry_id</property>
+  <documentation>Entry form name, e.g. CHG:ChangeInterface_Create.</documentation>
+  <label>Form Name:</label>
+  <property>form_name</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Entry form name, e.g. CHG:ChangeInterface_Create.</documentation>
-  <label>Form Name:</label>
-  <property>form_name</property>
-  <required>1</required>
+  <documentation>Entry ID of the entry to be queried. Either entry ID or entry number should be defined.</documentation>
+  <label>Entry ID:</label>
+  <property>entry_id</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Field name for Number field, e.g. ReleaseID.</documentation>
+  <label>Entry Number Field:</label>
+  <property>entry_number_field</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.</documentation>
+  <label>Entry Number:</label>
+  <property>entry_number</property>
+  <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>

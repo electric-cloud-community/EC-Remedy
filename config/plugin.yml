@@ -617,13 +617,23 @@ procedures:
       entryId: Entry ID
       entry: 'JSON representation of the incident'
     parameters:
-      - property: entry_id
-        type: entry
-        label: Entry ID
-        documentation: Entry ID of the entry to be queried
-        required: 1
       - property: form_name
         type: entry
         label: Form Name
         documentation: Entry form name, e.g. CHG:ChangeInterface_Create
         required: 1
+      - property: entry_id
+        type: entry
+        label: Entry ID
+        documentation: Entry ID of the entry to be queried. Either entry ID or entry number should be defined.
+        required: 0
+      - property: entry_number_field
+        type: entry
+        label: Entry Number Field
+        required: 0
+        documentation: Field name for Number field, e.g. ReleaseID
+      - property: entry_number
+        type: entry
+        required: 0
+        label: Entry Number
+        documentation: Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.
