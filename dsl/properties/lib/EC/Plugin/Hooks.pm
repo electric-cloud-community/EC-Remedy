@@ -188,7 +188,7 @@ sub get_entry_parsed {
     my $values = $data->{values};
     my $entry_id = $self->plugin->parameters->{entry_id};
     my $form = $self->plugin->parameters->{form_name};
-    $self->plugin->ec->setOutputParameter('incident', JSON->new->pretty->encode($values));
+    $self->plugin->ec->setOutputParameter('entry', JSON->new->pretty->encode($values));
     $self->plugin->ec->setOutputParameter('entryId', $entry_id);
     $self->plugin->logger->info("Got Entry: ", $values);
     $self->plugin->set_summary("Retrieved entry $form :: $entry_id");
@@ -196,8 +196,11 @@ sub get_entry_parsed {
     my $status_field = $self->plugin->parameters->{status_field} || 'Status';
     if ($status_field) {
         my $status = $values->{$status_field} || '';
-        $self->plugin->ec->setOutputParameter('entryStatus', $status);
-        $self->plugin->logger->info("Status is $status");
+        if ($status) {
+
+            $self->plugin->ec->setOutputParameter('entryStatus', $status);
+            $self->plugin->logger->info("Status is $status");
+        }
     }
 }
 

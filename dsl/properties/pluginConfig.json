@@ -576,7 +576,7 @@
       "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form}?fields=values(#{fields})&assoc=(#{expand})",
       "fields" : [
          "form",
-         "query",
+         "q",
          "fields",
          "expand"
       ],
@@ -595,7 +595,7 @@
             "documentation" : "Search qualification. e.g. 'Submitter' = \"Allen\"",
             "in" : "query",
             "label" : "Query",
-            "property" : "query",
+            "property" : "q",
             "required" : "0",
             "type" : "textarea"
          },
