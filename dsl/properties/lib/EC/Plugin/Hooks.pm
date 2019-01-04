@@ -93,6 +93,53 @@ sub define_hooks {
     $self->define_hook('get entry', 'after', \&get_entry_parsed);
     $self->define_hook('create incident', 'response', \&create_incident_response);
     $self->define_hook('create change request', 'response', \&create_change_request_response);
+    $self->define_hook('create entry', 'parameters', \&create_entry_params);
+    $self->define_hook('update entry', 'parameters', \&create_entry_params);
+    $self->define_hook('create entry', 'response', \&create_entry_response);
+    $self->define_hook('update entry', 'response', \&update_entry_response);
+}
+
+
+sub create_entry_params {
+    my ($self, $params) = @_;
+
+    my $values;
+    eval {
+        $values = decode_json($params->{values});
+        1;
+    } or do{
+        $self->plugin->bail_out("Values should be a valid JSON object: $@");
+    };
+
+    unless($values->{values}) {
+        $values = {values => $values};
+    }
+
+    $params->{values} = encode_json($values);
+    return $params;
+}
+
+
+sub update_entry_response {
+    my ($self, $response) = @_;
+
+    $self->plugin->run_one_step('get entry');
+}
+
+sub create_entry_response {
+    my ($self, $response) = @_;
+
+    unless($response->is_success) {
+        return;
+    }
+    my $url = $response->header('Location');
+    my $entry_id = $self->get_entry_id($url);
+    my $entry = $self->get_entry_from_url($url);
+
+    $self->plugin->ec->setOutputParameter('entry', JSON->new->utf8->pretty->encode($entry));
+    $self->plugin->ec->setOutputParameter('entryId', $entry_id);
+
+    $self->plugin->set_summary("Successfully created entry $entry_id");
 }
 
 sub get_entry_parsed {
@@ -257,6 +304,32 @@ sub parse_json_error {
     my $message = $json->{message};
     if ($message) {
         $self->plugin->bail_out($message);
+    }
+}
+
+sub get_entry_id {
+    my ($self, $url) = @_;
+
+    my $uri = URI->new($url);
+    my @segments = reverse $uri->path_segments;
+    my $entry_id = $segments[0];
+    return $entry_id;
+}
+
+
+sub get_entry_from_url {
+    my ($self, $url) = @_;
+
+    my $request = $self->plugin->get_new_http_request('GET', $url);
+    my $response = $self->plugin->request($self->plugin->current_step_name, $request);
+
+    if ($response->is_success) {
+        my $values = decode_json($response->content)->{values};
+        $self->plugin->logger->info("Got Entry", $values);
+        return $values;
+    }
+    else {
+        $self->plugin->bail_out("Request failed: " . $response->status_line);
     }
 }
 
