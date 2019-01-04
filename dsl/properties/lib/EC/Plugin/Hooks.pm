@@ -92,6 +92,7 @@ sub define_hooks {
     $self->define_hook('poll change request', 'after', \&poll_change_request);
     $self->define_hook('get incident', 'after', \&get_incident_parsed);
     $self->define_hook('get entry', 'after', \&get_entry_parsed);
+    $self->define_hook('get entry', 'parameters', \&get_entry_params);
     $self->define_hook('create incident', 'response', \&create_incident_response);
     $self->define_hook('update incident', 'response', \&update_incident_response);
     $self->define_hook('create change request', 'response', \&create_change_request_response);
@@ -100,6 +101,43 @@ sub define_hooks {
     $self->define_hook('create entry', 'response', \&create_entry_response);
     $self->define_hook('update entry', 'response', \&update_entry_response);
 }
+
+sub get_entry_params {
+    my ($self, $params) = @_;
+
+    return if $params->{entry_id};
+
+    my $entry_number = $params->{entry_number};
+    my $number_field = $params->{entry_number_field};
+
+    unless($entry_number && $number_field) {
+        $self->plugin->bail_out("Both number field and entry number should be defined for the fetching entry by number");
+    }
+
+    my $query = qq{'$number_field'="$entry_number"};
+    my $config = $self->plugin->get_config_values($params->{config});
+
+
+    my $url = $config->{endpoint} . "/api/arsys/v1/entry/$params->{form_name}?q=$query";
+    my $request = $self->plugin->get_new_http_request('GET', $url);
+
+    my $response = $self->plugin->request('query entries', $request);
+    unless($response->is_success) {
+        $self->plugin->bail_out("Cannot query entry id: " . $response->status_line);
+    }
+
+    my $entries = decode_json($response->content)->{entries};
+    if (scalar @$entries != 1) {
+        $self->plugin->bail_out("Failed to fetch entry ID, entries found: " . scalar @$entries);
+    }
+
+    my $entry_url = $entries->[0]->{_links}->{self}->[0]->{href};
+    $self->plugin->logger->info("Found entry URL: $entry_url");
+    my $entry_id = $self->get_entry_id($entry_url);
+    $params->{entry_id} = $entry_id;
+    return $params;
+}
+
 
 
 sub create_entry_params {
@@ -154,6 +192,13 @@ sub get_entry_parsed {
     $self->plugin->ec->setOutputParameter('entryId', $entry_id);
     $self->plugin->logger->info("Got Entry: ", $values);
     $self->plugin->set_summary("Retrieved entry $form :: $entry_id");
+
+    my $status_field = $self->plugin->parameters->{status_field} || 'Status';
+    if ($status_field) {
+        my $status = $values->{$status_field} || '';
+        $self->plugin->ec->setOutputParameter('entryStatus', $status);
+        $self->plugin->logger->info("Status is $status");
+    }
 }
 
 sub poll_entry {

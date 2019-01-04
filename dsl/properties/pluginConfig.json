@@ -296,29 +296,54 @@
       "description" : "Fetches Remedy entry with the specified form name and entry ID",
       "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/#{form_name}/#{entry_id}",
       "fields" : [
+         "form_name",
          "entry_id",
-         "form_name"
+         "entry_number_field",
+         "entry_number",
+         "status_field"
       ],
       "hasConfig" : "true",
       "method" : "GET",
       "name" : "GetEntry",
       "outputParameters" : {
          "entry" : "JSON representation of the incident",
-         "entryId" : "Entry ID"
+         "entryId" : "Entry ID",
+         "entryStatus" : "Status of the entry"
       },
       "parameters" : [
-         {
-            "documentation" : "Entry ID of the entry to be queried",
-            "label" : "Entry ID",
-            "property" : "entry_id",
-            "required" : "1",
-            "type" : "entry"
-         },
          {
             "documentation" : "Entry form name, e.g. CHG:ChangeInterface_Create",
             "label" : "Form Name",
             "property" : "form_name",
             "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Entry ID of the entry to be queried. Either entry ID or entry number should be defined.",
+            "label" : "Entry ID",
+            "property" : "entry_id",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Field name for Number field, e.g. ReleaseID",
+            "label" : "Entry Number Field",
+            "property" : "entry_number_field",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.",
+            "label" : "Entry Number",
+            "property" : "entry_number",
+            "required" : "0",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Field name of the status field, will be used to fill \"status\" output parameter.",
+            "label" : "Status Field",
+            "property" : "status_field",
+            "required" : "0",
             "type" : "entry"
          }
       ],

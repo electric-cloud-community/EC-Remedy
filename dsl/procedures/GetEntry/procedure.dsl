@@ -17,6 +17,7 @@ EC::Remedy::Plugin->new->run_step('get entry');
     // [Output Parameters Begin]
 formalOutputParameter 'entry', description: 'JSON representation of the incident'
 formalOutputParameter 'entryId', description: 'Entry ID'
+formalOutputParameter 'entryStatus', description: 'Status of the entry'
 
     // [Output Parameters End]
 }

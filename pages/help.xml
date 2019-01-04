@@ -745,12 +745,24 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Entry ID</td>
-                    <td>Entry ID of the entry to be queried</td>
-                </tr>
-                <tr>
                     <td class="required">Form Name</td>
                     <td>Entry form name, e.g. CHG:ChangeInterface_Create</td>
+                </tr>
+                <tr>
+                    <td>Entry ID</td>
+                    <td>Entry ID of the entry to be queried. Either entry ID or entry number should be defined.</td>
+                </tr>
+                <tr>
+                    <td>Entry Number Field</td>
+                    <td>Field name for Number field, e.g. ReleaseID</td>
+                </tr>
+                <tr>
+                    <td>Entry Number</td>
+                    <td>Entry Number, e.g. RLM000000000013. Either entry number or entry id should be defined.</td>
+                </tr>
+                <tr>
+                    <td>Status Field</td>
+                    <td>Field name of the status field, will be used to fill "status" output parameter.</td>
                 </tr>
                  </tbody>
             </table>
