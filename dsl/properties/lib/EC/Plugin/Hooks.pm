@@ -350,7 +350,7 @@ sub parse_json_error {
 
     my $formatted_response = JSON->new->utf8->pretty->encode($json);
     $self->plugin->logger->info('Got error', $formatted_response);
-    my $message = $json->{message};
+    my $message = $json->[0]->{messageText};
     if ($message) {
         $self->plugin->bail_out($message);
     }
