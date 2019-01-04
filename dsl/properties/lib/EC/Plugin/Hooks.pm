@@ -90,8 +90,10 @@ sub define_hooks {
     $self->define_hook('poll entry', 'after', \&poll_entry);
     $self->define_hook('poll incident', 'after', \&poll_incident);
     $self->define_hook('poll change request', 'after', \&poll_change_request);
+    $self->define_hook('get incident', 'after', \&get_incident_parsed);
     $self->define_hook('get entry', 'after', \&get_entry_parsed);
     $self->define_hook('create incident', 'response', \&create_incident_response);
+    $self->define_hook('update incident', 'response', \&update_incident_response);
     $self->define_hook('create change request', 'response', \&create_change_request_response);
     $self->define_hook('create entry', 'parameters', \&create_entry_params);
     $self->define_hook('update entry', 'parameters', \&create_entry_params);
@@ -148,7 +150,7 @@ sub get_entry_parsed {
     my $values = $data->{values};
     my $entry_id = $self->plugin->parameters->{entry_id};
     my $form = $self->plugin->parameters->{form_name};
-    $self->plugin->ec->setOutputParameter('entry', JSON->new->pretty->encode($values));
+    $self->plugin->ec->setOutputParameter('incident', JSON->new->pretty->encode($values));
     $self->plugin->ec->setOutputParameter('entryId', $entry_id);
     $self->plugin->logger->info("Got Entry: ", $values);
     $self->plugin->set_summary("Retrieved entry $form :: $entry_id");
@@ -334,6 +336,18 @@ sub get_entry_from_url {
 }
 
 
+sub get_incident_parsed {
+    my ($self, $data) = @_;
+
+    my $values = $data->{values};
+    my $entry_id = $self->plugin->parameters->{entry_id};
+    $self->plugin->ec->setOutputParameter('incident', JSON->new->pretty->encode($values));
+    $self->plugin->ec->setOutputParameter('entryId', $entry_id);
+    $self->plugin->logger->info("Got Incident: ", $values);
+    $self->plugin->set_summary("Retrieved entry $entry_id");
+}
+
+
 sub create_incident_response {
     my ($self, $response) = @_;
 
@@ -362,6 +376,13 @@ sub create_incident_response {
     else {
         $self->plugin->warning('URL not found for created incident.');
     }
+}
+
+
+sub update_incident_response {
+    my ($self, $response) = @_;
+    return if $response->is_error;
+    $self->plugin->run_one_step('get incident');
 }
 
 

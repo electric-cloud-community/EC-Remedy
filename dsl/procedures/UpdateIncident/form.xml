@@ -11,9 +11,9 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Request ID.</documentation>
-  <label>Request ID:</label>
-  <property>request_id</property>
+  <documentation>Entry ID.</documentation>
+  <label>Entry ID:</label>
+  <property>entry_id</property>
   <required>1</required>
   <type>entry</type>
   <value></value>

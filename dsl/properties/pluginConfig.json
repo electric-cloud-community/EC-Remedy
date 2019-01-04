@@ -330,19 +330,23 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{incident_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{entry_id}",
       "fields" : [
-         "incident_id",
+         "entry_id",
          "fields"
       ],
       "hasConfig" : "true",
       "method" : "GET",
       "name" : "GetIncident",
+      "outputParameters" : {
+         "entryId" : "Entry ID",
+         "incident" : "JSON representation of the incident"
+      },
       "parameters" : [
          {
             "documentation" : "Entry ID of an incident.",
-            "label" : "Incident ID",
-            "property" : "incident_id",
+            "label" : "Entry ID",
+            "property" : "entry_id",
             "required" : "1",
             "type" : "entry"
          },
@@ -755,9 +759,9 @@
       "documentationLinks" : [
          "https://docs.bmc.com/docs/ars1808/entry-formname-820499808.html"
       ],
-      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{request_id}",
+      "endpoint" : "#{{endpoint}}/api/arsys/v1/entry/HPD:IncidentInterface_Create/#{entry_id}",
       "fields" : [
-         "request_id",
+         "entry_id",
          "description",
          "incident_status",
          "urgency",
@@ -769,11 +773,15 @@
       "hasConfig" : "true",
       "method" : "PUT",
       "name" : "UpdateIncident",
+      "outputParameters" : {
+         "entryId" : "Entry ID of the incident",
+         "incident" : "JSON representation of the incident"
+      },
       "parameters" : [
          {
-            "documentation" : "Request ID",
-            "label" : "Request ID",
-            "property" : "request_id",
+            "documentation" : "Entry ID",
+            "label" : "Entry ID",
+            "property" : "entry_id",
             "required" : "1",
             "type" : "entry"
          },

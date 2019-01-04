@@ -282,7 +282,7 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Incident ID</td>
+                    <td class="required">Entry ID</td>
                     <td>Entry ID of an incident.</td>
                 </tr>
                 <tr>
@@ -388,8 +388,8 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Request ID</td>
-                    <td>Request ID</td>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID</td>
                 </tr>
                 <tr>
                     <td>Description</td>

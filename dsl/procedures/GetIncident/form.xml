@@ -12,8 +12,8 @@
 </formElement>
 <formElement>
   <documentation>Entry ID of an incident.</documentation>
-  <label>Incident ID:</label>
-  <property>incident_id</property>
+  <label>Entry ID:</label>
+  <property>entry_id</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
