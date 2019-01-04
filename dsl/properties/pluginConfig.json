@@ -21,6 +21,10 @@
       "hasConfig" : "true",
       "method" : "POST",
       "name" : "Create Change Request",
+      "outputParameters" : {
+         "changeRequest" : "JSON representation of the change request",
+         "entryId" : "Entry ID of the change request"
+      },
       "parameters" : [
          {
             "documentation" : "An change request description.",
