@@ -576,8 +576,8 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Change Request ID</td>
-                    <td>Entry ID of an incident.</td>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of a change request.</td>
                 </tr>
                 <tr>
                     <td>Fields</td>
@@ -678,8 +678,8 @@
                     <td>Previously defined plugin configuration.</td>
                 </tr>
                 <tr>
-                    <td class="required">Request ID</td>
-                    <td>Request ID</td>
+                    <td class="required">Entry ID</td>
+                    <td>Entry ID of a change request.</td>
                 </tr>
                 <tr>
                     <td>Description</td>

@@ -95,7 +95,9 @@ sub define_hooks {
     $self->define_hook('get entry', 'parameters', \&get_entry_params);
     $self->define_hook('create incident', 'response', \&create_incident_response);
     $self->define_hook('update incident', 'response', \&update_incident_response);
+    $self->define_hook('get change request',    'after',    \&get_change_request_parsed);
     $self->define_hook('create change request', 'response', \&create_change_request_response);
+    $self->define_hook('update change request', 'response', \&update_change_request_response);
     $self->define_hook('create entry', 'parameters', \&create_entry_params);
     $self->define_hook('update entry', 'parameters', \&create_entry_params);
     $self->define_hook('create entry', 'response', \&create_entry_response);
@@ -351,7 +353,7 @@ sub parse_json_error {
 
     my $formatted_response = JSON->new->utf8->pretty->encode($json);
     $self->plugin->logger->info('Got error', $formatted_response);
-    my $message = $json->{message};
+    my $message = $json->[0]->{messageText};
     if ($message) {
         $self->plugin->bail_out($message);
     }
@@ -434,6 +436,18 @@ sub update_incident_response {
 }
 
 
+sub get_change_request_parsed {
+    my ($self, $data) = @_;
+
+    my $values = $data->{values};
+    my $entry_id = $self->plugin->parameters->{entry_id};
+    $self->plugin->ec->setOutputParameter('changeRequest', JSON->new->pretty->encode($values));
+    $self->plugin->ec->setOutputParameter('entryId', $entry_id);
+    $self->plugin->logger->info("Got Change Request: ", $values);
+    $self->plugin->set_summary("Retrieved entry $entry_id");
+}
+
+
 sub create_change_request_response {
     my ($self, $response) = @_;
 
@@ -460,7 +474,14 @@ sub create_change_request_response {
         }
     }
     else {
-        $self->plugin->warning('URL not found for created incident.');
+        $self->plugin->warning('URL not found for created change request.');
     }
+}
+
+
+sub update_change_request_response {
+    my ($self, $response) = @_;
+    return if $response->is_error;
+    $self->plugin->run_one_step('get change request');
 }
 1;
