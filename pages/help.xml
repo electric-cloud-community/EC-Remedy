@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta content="text/html; charset=us-ascii" http-equiv="content-type" />
-    <title><!-- TITLE BEGIN -->Electric Flow integration for the BMC Remedy System<!-- TITLE END --></title>
+    <title><!-- TITLE BEGIN -->CloudBees CD integration for the BMC Remedy System<!-- TITLE END --></title>
     <link rel="stylesheet" href="../../plugins/@PLUGIN_KEY@/pluginhelp.css" type="text/css" media="screen" />
 </head>
 <!-- REST PLUGIN WIZARD HELP -->
@@ -51,7 +51,7 @@
                 parameters on procedures that use them.<br /><br />
             </p>
             <h3>Creating Plugin Configurations</h3>
-            <p>To create plugin configurations in ElectricFlow,
+            <p>To create plugin configurations in CloudBees CD,
             do these steps:</p>
             <ol>
                 <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
@@ -59,7 +59,7 @@
                 <li>Click <b>Configure</b> to open the
                 @PLUGIN_KEY@ Configurations page.</li>
                 <li>Click <b>Create Configuration</b>.</li>
-                <li>To enable ElectricFlow server to communicate with the API,
+                <li>To enable CloudBees CD server to communicate with the API,
                 enter the following information:<br /></li>
                 <!-- CONFIG PARAMS BEGIN -->
     <table class="grid">
@@ -107,7 +107,7 @@
             </ol>
             <p>The @PLUGIN_KEY@ Configurations page now shows the new configuration.</p>
             <h3>Editing Plugin Configurations</h3>
-            <p>To edit plugin configurations in ElectricFlow,
+            <p>To edit plugin configurations in CloudBees CD,
             do these steps:</p>
             <ol>
                 <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>

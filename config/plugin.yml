@@ -3,7 +3,7 @@ options:
 common:
   formXmlCompliant: true
 help:
-  title: Electric Flow integration for the BMC Remedy System
+  title: CloudBees CD integration for the BMC Remedy System
   description: |
     This plugin allows to work with REST API of BMC Remedy System.
   links:
